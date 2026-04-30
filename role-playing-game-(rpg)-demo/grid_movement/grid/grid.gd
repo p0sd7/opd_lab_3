@@ -30,7 +30,7 @@ func request_move(pawn, direction: Vector2i):
 			return map_to_local(cell_target)
 		CellType.OBJECT, CellType.ACTOR:
 			var target_pawn = get_cell_pawn(cell_target, cell_tile_id)
-			#print("Cell %s contains %s" % [cell_target, target_pawn.name])
+			print("Cell %s contains %s" % [cell_target, target_pawn.name])
 
 			if not target_pawn.has_node("DialoguePlayer"):
 				return

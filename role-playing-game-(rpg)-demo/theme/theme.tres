@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=16 format=3 uid="uid://dtao6d0ebglcf"]
+[gd_resource type="Theme" format=3 uid="uid://dtao6d0ebglcf"]
 
 [ext_resource type="FontFile" path="res://theme/fonts/montserrat_extra_bold_32.tres" id="1"]
 [ext_resource type="Texture2D" uid="uid://db8sojp3swx6t" path="res://theme/images/button_rect.png" id="2"]

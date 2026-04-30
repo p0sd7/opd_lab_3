@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://4ytneg8br7qd"
-path="res://.godot/imported/player_surprised.png-53024e2b01c77578b1edd8c186bb91cb.ctex"
+uid="uid://m60xonalqdap"
+path="res://.godot/imported/player.png-92634b1ab4cf3ddadac7f472bc0adb17.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://combat/combatants/sprites/player_surprised.png"
-dest_files=["res://.godot/imported/player_surprised.png-53024e2b01c77578b1edd8c186bb91cb.ctex"]
+source_file="res://grid_movement/grid/tiles/player.png"
+dest_files=["res://.godot/imported/player.png-92634b1ab4cf3ddadac7f472bc0adb17.ctex"]
 
 [params]
 

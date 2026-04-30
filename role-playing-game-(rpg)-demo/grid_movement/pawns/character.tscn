@@ -1,12 +1,14 @@
-[gd_scene load_steps=21 format=3 uid="uid://bdni5iw2j108j"]
+[gd_scene format=3 uid="uid://bdni5iw2j108j"]
 
-[ext_resource type="Script" path="res://grid_movement/pawns/walker.gd" id="1"]
-[ext_resource type="Texture2D" uid="uid://ba5rklp7brg7" path="res://grid_movement/pawns/character.png" id="2"]
-[ext_resource type="Texture2D" uid="uid://c7n37h1euodch" path="res://grid_movement/pawns/player_exploration.png" id="3"]
-[ext_resource type="Texture2D" uid="uid://c5mr2yqxvctld" path="res://grid_movement/pawns/player_exploration_bump.png" id="4"]
+[ext_resource type="Script" uid="uid://dsuxym66xhfvk" path="res://grid_movement/pawns/walker.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://b0b51vqu5towx" path="res://grid_movement/pawns/player_exploration.png" id="3"]
+[ext_resource type="Texture2D" uid="uid://m60xonalqdap" path="res://grid_movement/grid/tiles/player.png" id="4_1c7h6"]
 
 [sub_resource type="Animation" id="3"]
 length = 0.001
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_iug1p"]
+load_path = "res://.godot/imported/player_exploration_bump.png-540858ef0eac6c6b2d38ba907b1d4eeb.ctex"
 
 [sub_resource type="Animation" id="1"]
 resource_name = "bump"
@@ -58,7 +60,7 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0, 0.24, 0.25),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [ExtResource("4"), ExtResource("4"), ExtResource("3")]
+"values": [SubResource("CompressedTexture2D_iug1p"), SubResource("CompressedTexture2D_iug1p"), ExtResource("3")]
 }
 
 [sub_resource type="Animation" id="4"]
@@ -181,10 +183,10 @@ tracks/5/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_yxglf"]
 _data = {
-"RESET": SubResource("3"),
-"bump": SubResource("1"),
-"idle": SubResource("4"),
-"walk": SubResource("2")
+&"RESET": SubResource("3"),
+&"bump": SubResource("1"),
+&"idle": SubResource("4"),
+&"walk": SubResource("2")
 }
 
 [sub_resource type="AnimationNodeAnimation" id="9"]
@@ -212,47 +214,40 @@ advance_mode = 0
 
 [sub_resource type="AnimationNodeStateMachine" id="5"]
 states/End/position = Vector2(245, -15)
-states/Start/position = Vector2(-22, 84)
+states/Start/position = Vector2(-22, 83.5)
 states/bump/node = SubResource("9")
 states/bump/position = Vector2(139, 194)
 states/idle/node = SubResource("7")
-states/idle/position = Vector2(139, 36)
+states/idle/position = Vector2(138.875, 36)
 states/walk/node = SubResource("10")
 states/walk/position = Vector2(310, 116)
 transitions = ["walk", "idle", SubResource("11"), "bump", "idle", SubResource("12"), "idle", "walk", SubResource("13"), "idle", "bump", SubResource("14"), "Start", "idle", SubResource("AnimationNodeStateMachineTransition_ed7tp"), "idle", "End", SubResource("AnimationNodeStateMachineTransition_j3wgi")]
-graph_offset = Vector2(-609, -158)
+graph_offset = Vector2(-345.48788, -43.575356)
 
-[sub_resource type="AnimationNodeStateMachinePlayback" id="6"]
-
-[node name="Character" type="Node2D"]
+[node name="Character" type="Node2D" unique_id=479044762]
 z_index = 1
 position = Vector2(32, 32)
 script = ExtResource("1")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_yxglf")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1338597551]
+libraries/ = SubResource("AnimationLibrary_yxglf")
 
-[node name="Pivot" type="Marker2D" parent="."]
+[node name="Pivot" type="Marker2D" parent="." unique_id=1188488896]
 
-[node name="Slime" type="Sprite2D" parent="Pivot"]
-position = Vector2(0, -4.37912)
-scale = Vector2(0.908741, 1.13728)
-texture = ExtResource("3")
+[node name="Slime" type="Sprite2D" parent="Pivot" unique_id=943897375]
+position = Vector2(0, -2.0679674)
+scale = Vector2(0.9620305, 1.0650135)
 centered = false
 offset = Vector2(-32, -32)
 
-[node name="Sprite2D" type="Sprite2D" parent="Pivot"]
+[node name="Sprite2D" type="Sprite2D" parent="Pivot" unique_id=803279689]
 visible = false
 self_modulate = Color(0, 0, 0, 1)
 scale = Vector2(1e-05, 1e-05)
-texture = ExtResource("2")
+texture = ExtResource("4_1c7h6")
 centered = false
 offset = Vector2(-32, -32)
 
-[node name="AnimationTree" type="AnimationTree" parent="."]
+[node name="AnimationTree" type="AnimationTree" parent="." unique_id=671337030]
 tree_root = SubResource("5")
 anim_player = NodePath("../AnimationPlayer")
-active = true
-parameters/playback = SubResource("6")

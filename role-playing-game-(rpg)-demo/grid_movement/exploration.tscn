@@ -1,14 +1,14 @@
-[gd_scene load_steps=27 format=3 uid="uid://ckgv4m67a5kfj"]
+[gd_scene format=3 uid="uid://ckgv4m67a5kfj"]
 
 [ext_resource type="TileSet" path="res://grid_movement/grid/lines/grid_lines_tileset.tres" id="1"]
 [ext_resource type="TileSet" path="res://grid_movement/grid/tiles/grid_tileset.tres" id="2"]
-[ext_resource type="Script" path="res://grid_movement/grid/grid.gd" id="3"]
+[ext_resource type="Script" uid="uid://ctv2ou6he67js" path="res://grid_movement/grid/grid.gd" id="3"]
 [ext_resource type="PackedScene" uid="uid://bdni5iw2j108j" path="res://grid_movement/pawns/character.tscn" id="4"]
 [ext_resource type="PackedScene" uid="uid://d05javsln2aci" path="res://combat/combatants/player.tscn" id="5"]
-[ext_resource type="Script" path="res://grid_movement/pawns/opponent.gd" id="6"]
+[ext_resource type="Script" uid="uid://c5kt7ga1yf1bv" path="res://grid_movement/pawns/opponent.gd" id="6"]
 [ext_resource type="PackedScene" uid="uid://dp7gq0vfmf4nc" path="res://combat/combatants/opponent.tscn" id="7"]
 [ext_resource type="PackedScene" path="res://dialogue/dialogue_player/dialogue_player.tscn" id="8"]
-[ext_resource type="Script" path="res://grid_movement/pawns/pawn.gd" id="9"]
+[ext_resource type="Script" uid="uid://bv8tec2u24r7p" path="res://grid_movement/pawns/pawn.gd" id="9"]
 [ext_resource type="PackedScene" uid="uid://nb2wowyl2vi0" path="res://dialogue/interface/interface.tscn" id="10"]
 [ext_resource type="TileSet" path="res://grid_movement/grid/tiles/ground_tileset.tres" id="11"]
 [ext_resource type="Texture2D" uid="uid://mi3mmtft0snh" path="res://decoration/grass.png" id="12"]
@@ -26,611 +26,609 @@
 [ext_resource type="Texture2D" uid="uid://bm0xbwedm3iwt" path="res://decoration/flower_upperlevel.png" id="24"]
 [ext_resource type="Texture2D" uid="uid://ct0dfl4e14ahx" path="res://decoration/bush.png" id="25"]
 
-[sub_resource type="AnimationNodeStateMachinePlayback" id="AnimationNodeStateMachinePlayback_ksykr"]
+[node name="Exploration" type="Node2D" unique_id=589395677]
 
-[node name="Exploration" type="Node2D"]
-
-[node name="Ground" type="TileMap" parent="."]
+[node name="Ground" type="TileMap" parent="." unique_id=1748527426]
 z_index = -3
 position = Vector2(0, 25)
 tile_set = ExtResource("11")
 format = 2
 layer_0/tile_data = PackedInt32Array(0, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0, 4, 0, 0, 5, 0, 0, 6, 0, 0, 7, 0, 0, 8, 0, 0, 9, 0, 0, 10, 0, 0, 11, 0, 0, 12, 0, 0, 13, 0, 0, 14, 0, 0, 15, 0, 0, 16, 0, 0, 17, 0, 0, 18, 0, 0, 65536, 0, 0, 65537, 0, 0, 65538, 0, 0, 65539, 0, 0, 65540, 0, 0, 65541, 0, 0, 65542, 0, 0, 65543, 0, 0, 65544, 0, 0, 65545, 0, 0, 65546, 0, 0, 65547, 0, 0, 65548, 0, 0, 65549, 0, 0, 65550, 0, 0, 65551, 0, 0, 65552, 0, 0, 65553, 0, 0, 65554, 0, 0, 131072, 0, 0, 131073, 0, 0, 131074, 0, 0, 131075, 0, 0, 131076, 0, 0, 131077, 0, 0, 131078, 0, 0, 131079, 0, 0, 131080, 0, 0, 131081, 0, 0, 131082, 0, 0, 131083, 0, 0, 131084, 0, 0, 131085, 0, 0, 131086, 0, 0, 131087, 0, 0, 131088, 0, 0, 131089, 0, 0, 131090, 0, 0, 196608, 0, 0, 196609, 0, 0, 196610, 0, 0, 196611, 0, 0, 196612, 0, 0, 196613, 0, 0, 196614, 0, 0, 196615, 0, 0, 196616, 0, 0, 196617, 0, 0, 196618, 0, 0, 196619, 0, 0, 196620, 0, 0, 196621, 0, 0, 196622, 0, 0, 196623, 0, 0, 196624, 0, 0, 196625, 0, 0, 196626, 0, 0, 262144, 0, 0, 262145, 0, 0, 262146, 0, 0, 262147, 0, 0, 262148, 0, 0, 262149, 0, 0, 262150, 0, 0, 262151, 0, 0, 262152, 0, 0, 262153, 0, 0, 262154, 0, 0, 262155, 0, 0, 262156, 0, 0, 262157, 0, 0, 262158, 0, 0, 262159, 0, 0, 262160, 0, 0, 262161, 0, 0, 262162, 0, 0, 327680, 0, 0, 327681, 0, 0, 327682, 0, 0, 327683, 0, 0, 327684, 0, 0, 327685, 0, 0, 327686, 0, 0, 327687, 0, 0, 327688, 0, 0, 327689, 0, 0, 327690, 0, 0, 327691, 0, 0, 327692, 0, 0, 327693, 0, 0, 327694, 0, 0, 327695, 0, 0, 327696, 0, 0, 327697, 0, 0, 327698, 0, 0, 393216, 0, 0, 393217, 0, 0, 393218, 0, 0, 393219, 0, 0, 393220, 0, 0, 393221, 0, 0, 393222, 0, 0, 393223, 0, 0, 393224, 0, 0, 393225, 0, 0, 393226, 0, 0, 393227, 0, 0, 393228, 0, 0, 393229, 0, 0, 393230, 0, 0, 393231, 0, 0, 393232, 0, 0, 393233, 0, 0, 393234, 0, 0, 458752, 0, 0, 458753, 0, 0, 458754, 0, 0, 458755, 0, 0, 458756, 0, 0, 458757, 0, 0, 458758, 0, 0, 458759, 0, 0, 458760, 0, 0, 458761, 0, 0, 458762, 0, 0, 458763, 0, 0, 458764, 0, 0, 458765, 0, 0, 458766, 0, 0, 458767, 0, 0, 458768, 0, 0, 458769, 0, 0, 458770, 0, 0, 524288, 0, 0, 524289, 0, 0, 524290, 0, 0, 524291, 0, 0, 524292, 0, 0, 524293, 0, 0, 524294, 0, 0, 524295, 0, 0, 524296, 0, 0, 524297, 0, 0, 524298, 0, 0, 524299, 0, 0, 524300, 0, 0, 524301, 0, 0, 524302, 0, 0, 524303, 0, 0, 524304, 0, 0, 524305, 0, 0, 524306, 0, 0, 589824, 0, 0, 589825, 0, 0, 589826, 0, 0, 589827, 0, 0, 589828, 0, 0, 589829, 0, 0, 589830, 0, 0, 589831, 0, 0, 589832, 0, 0, 589833, 0, 0, 589834, 0, 0, 589835, 0, 0, 589836, 0, 0, 589837, 0, 0, 589838, 0, 0, 589839, 0, 0, 589840, 0, 0, 589841, 0, 0, 589842, 0, 0, 655360, 0, 0, 655361, 0, 0, 655362, 0, 0, 655363, 0, 0, 655364, 0, 0, 655365, 0, 0, 655366, 0, 0, 655367, 0, 0, 655368, 0, 0, 655369, 0, 0, 655370, 0, 0, 655371, 0, 0, 655372, 0, 0, 655373, 0, 0, 655374, 0, 0, 655375, 0, 0, 655376, 0, 0, 655377, 0, 0, 655378, 0, 0)
 
-[node name="Pathways" type="TileMap" parent="."]
+[node name="Pathways" type="TileMap" parent="." unique_id=1936824598]
 position = Vector2(0, 25)
 tile_set = ExtResource("16")
 format = 2
 layer_0/tile_data = PackedInt32Array(11, 1, 0, 12, 2, 393216, 13, 2, 393216, 14, 2, 393216, 15, 1, 65536, 65547, 3, 393216, 65548, 0, 393216, 65549, 0, 393216, 65550, 0, 393216, 65551, 3, 458752, 131074, 3, 262144, 131075, 0, 327680, 131076, 3, 65536, 196610, 0, 0, 196611, 2, 262144, 196612, 1, 65536, 196615, 0, 262144, 196616, 0, 262144, 196617, 0, 262144, 196618, 0, 262144, 196619, 3, 65536, 262146, 0, 0, 262147, 2, 262144, 262148, 0, 196608, 262151, 2, 65536, 262152, 2, 65536, 262153, 2, 65536, 262154, 2, 65536, 262155, 0, 196608, 327682, 3, 393216, 327683, 0, 458752, 327684, 3, 458752, 327687, 0, 393216, 327688, 0, 393216, 327689, 0, 393216, 327690, 0, 393216, 327691, 3, 196608, 327695, 3, 262144, 327696, 0, 262144, 327697, 0, 262144, 327698, 2, 262144, 393227, 3, 0, 393228, 0, 262144, 393229, 3, 327680, 393231, 1, 131072, 393232, 2, 262144, 393233, 2, 262144, 393234, 2, 262144, 458763, 1, 131072, 458764, 2, 131072, 458765, 0, 196608, 458767, 0, 131072, 458768, 2, 262144, 458769, 2, 262144, 458770, 2, 262144, 458771, 2, 262144, 524299, 3, 393216, 524300, 1, 458752, 524301, 3, 196608, 524303, 3, 131072, 524304, 1, 458752, 524305, 1, 458752, 524306, 2, 262144, 524307, 2, 262144)
 
-[node name="Decoration" type="Node2D" parent="."]
+[node name="Decoration" type="Node2D" parent="." unique_id=376849290]
 
-[node name="Grass" type="Node2D" parent="Decoration"]
+[node name="Grass" type="Node2D" parent="Decoration" unique_id=1378248373]
 
-[node name="flower4" type="Sprite2D" parent="Decoration/Grass"]
+[node name="flower4" type="Sprite2D" parent="Decoration/Grass" unique_id=350216732]
 material = ExtResource("13")
 position = Vector2(105, 307)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("21")
 
-[node name="flower6" type="Sprite2D" parent="Decoration/Grass"]
+[node name="flower6" type="Sprite2D" parent="Decoration/Grass" unique_id=968492937]
 material = ExtResource("13")
 position = Vector2(344, 138)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("22")
 
-[node name="grass3" type="Sprite2D" parent="Decoration/Grass"]
+[node name="grass3" type="Sprite2D" parent="Decoration/Grass" unique_id=816506072]
 material = ExtResource("13")
 position = Vector2(440, 528)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("12")
 
-[node name="grass4" type="Sprite2D" parent="Decoration/Grass"]
+[node name="grass4" type="Sprite2D" parent="Decoration/Grass" unique_id=882065020]
 material = ExtResource("13")
 position = Vector2(300, 531)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("12")
 
-[node name="flower1" type="Sprite2D" parent="Decoration/Grass"]
+[node name="flower1" type="Sprite2D" parent="Decoration/Grass" unique_id=1111888028]
 material = ExtResource("13")
 position = Vector2(863, 129)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("21")
 
-[node name="grass5" type="Sprite2D" parent="Decoration/Grass"]
+[node name="grass5" type="Sprite2D" parent="Decoration/Grass" unique_id=1222377976]
 material = ExtResource("13")
 position = Vector2(933, 372)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("15")
 
-[node name="grass30" type="Sprite2D" parent="Decoration/Grass"]
+[node name="grass30" type="Sprite2D" parent="Decoration/Grass" unique_id=127265906]
 material = ExtResource("13")
 position = Vector2(1032, 301)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("15")
 
-[node name="flower3" type="Sprite2D" parent="Decoration/Grass"]
+[node name="flower3" type="Sprite2D" parent="Decoration/Grass" unique_id=1422951765]
 material = ExtResource("13")
 position = Vector2(930, 310)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("21")
 
-[node name="grass6" type="Sprite2D" parent="Decoration/Grass"]
+[node name="grass6" type="Sprite2D" parent="Decoration/Grass" unique_id=1801862469]
 material = ExtResource("13")
 position = Vector2(479, 537)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("15")
 
-[node name="grass69" type="Sprite2D" parent="Decoration/Grass"]
+[node name="grass69" type="Sprite2D" parent="Decoration/Grass" unique_id=440262334]
 material = ExtResource("13")
 position = Vector2(691, 571)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("15")
 
-[node name="grass7" type="Sprite2D" parent="Decoration/Grass"]
+[node name="grass7" type="Sprite2D" parent="Decoration/Grass" unique_id=602485530]
 material = ExtResource("13")
 position = Vector2(402, 534)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("15")
 
-[node name="grass70" type="Sprite2D" parent="Decoration/Grass"]
+[node name="grass70" type="Sprite2D" parent="Decoration/Grass" unique_id=1872321526]
 material = ExtResource("13")
 position = Vector2(583, 605)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("15")
 
-[node name="grass8" type="Sprite2D" parent="Decoration/Grass"]
+[node name="grass8" type="Sprite2D" parent="Decoration/Grass" unique_id=1191537037]
 material = ExtResource("13")
 position = Vector2(289, 389)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("15")
 
-[node name="grass31" type="Sprite2D" parent="Decoration/Grass"]
+[node name="grass31" type="Sprite2D" parent="Decoration/Grass" unique_id=1172149671]
 material = ExtResource("13")
 position = Vector2(174, 448)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("15")
 
-[node name="grass9" type="Sprite2D" parent="Decoration/Grass"]
+[node name="grass9" type="Sprite2D" parent="Decoration/Grass" unique_id=593219751]
 material = ExtResource("13")
 position = Vector2(176, 392)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("12")
 
-[node name="grass66" type="Sprite2D" parent="Decoration/Grass"]
+[node name="grass66" type="Sprite2D" parent="Decoration/Grass" unique_id=1976130341]
 material = ExtResource("13")
 position = Vector2(933, 435)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("15")
 
-[node name="grass67" type="Sprite2D" parent="Decoration/Grass"]
+[node name="grass67" type="Sprite2D" parent="Decoration/Grass" unique_id=840079397]
 material = ExtResource("13")
 position = Vector2(804, 389)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("12")
 
-[node name="grass10" type="Sprite2D" parent="Decoration/Grass"]
+[node name="grass10" type="Sprite2D" parent="Decoration/Grass" unique_id=509446133]
 material = ExtResource("13")
 position = Vector2(178, 118)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("15")
 
-[node name="grass58" type="Sprite2D" parent="Decoration/Grass"]
+[node name="grass58" type="Sprite2D" parent="Decoration/Grass" unique_id=966137095]
 material = ExtResource("13")
 position = Vector2(96, 178)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("15")
 
-[node name="grass11" type="Sprite2D" parent="Decoration/Grass"]
+[node name="grass11" type="Sprite2D" parent="Decoration/Grass" unique_id=1534154728]
 material = ExtResource("13")
 position = Vector2(913, 126)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("15")
 
-[node name="grass12" type="Sprite2D" parent="Decoration/Grass"]
+[node name="grass12" type="Sprite2D" parent="Decoration/Grass" unique_id=361600006]
 material = ExtResource("13")
 position = Vector2(887, 156)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("15")
 
-[node name="grass13" type="Sprite2D" parent="Decoration/Grass"]
+[node name="grass13" type="Sprite2D" parent="Decoration/Grass" unique_id=1515590712]
 material = ExtResource("13")
 position = Vector2(939, 147)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("12")
 
-[node name="grass14" type="Sprite2D" parent="Decoration/Grass"]
+[node name="grass14" type="Sprite2D" parent="Decoration/Grass" unique_id=314269759]
 material = ExtResource("13")
 position = Vector2(793, 358)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("12")
 
-[node name="grass32" type="Sprite2D" parent="Decoration/Grass"]
+[node name="grass32" type="Sprite2D" parent="Decoration/Grass" unique_id=642419234]
 material = ExtResource("13")
 position = Vector2(883, 266)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("12")
 
-[node name="grass15" type="Sprite2D" parent="Decoration/Grass"]
+[node name="grass15" type="Sprite2D" parent="Decoration/Grass" unique_id=1348939708]
 material = ExtResource("13")
 position = Vector2(966, 574)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("12")
 
-[node name="grass16" type="Sprite2D" parent="Decoration/Grass"]
+[node name="grass16" type="Sprite2D" parent="Decoration/Grass" unique_id=1112333746]
 material = ExtResource("13")
 position = Vector2(902, 581)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("15")
 
-[node name="grass72" type="Sprite2D" parent="Decoration/Grass"]
+[node name="grass72" type="Sprite2D" parent="Decoration/Grass" unique_id=559565558]
 material = ExtResource("13")
 position = Vector2(528, 499)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("15")
 
-[node name="grass19" type="Sprite2D" parent="Decoration/Grass"]
+[node name="grass19" type="Sprite2D" parent="Decoration/Grass" unique_id=580515249]
 material = ExtResource("13")
 position = Vector2(929, 587)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("15")
 
-[node name="grass17" type="Sprite2D" parent="Decoration/Grass"]
+[node name="grass17" type="Sprite2D" parent="Decoration/Grass" unique_id=1383685631]
 material = ExtResource("13")
 position = Vector2(861, 584)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("12")
 
-[node name="grass20" type="Sprite2D" parent="Decoration/Grass"]
+[node name="grass20" type="Sprite2D" parent="Decoration/Grass" unique_id=1172505370]
 material = ExtResource("13")
 position = Vector2(983, 592)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("12")
 
-[node name="grass18" type="Sprite2D" parent="Decoration/Grass"]
+[node name="grass18" type="Sprite2D" parent="Decoration/Grass" unique_id=214180374]
 material = ExtResource("13")
 position = Vector2(443, 557)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("12")
 
-[node name="grass57" type="Sprite2D" parent="Decoration/Grass"]
+[node name="grass57" type="Sprite2D" parent="Decoration/Grass" unique_id=780798504]
 material = ExtResource("13")
 position = Vector2(376, 575)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("21")
 
-[node name="grass21" type="Sprite2D" parent="Decoration/Grass"]
+[node name="grass21" type="Sprite2D" parent="Decoration/Grass" unique_id=1853935914]
 material = ExtResource("13")
 position = Vector2(916, 603)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("15")
 
-[node name="grass22" type="Sprite2D" parent="Decoration/Grass"]
+[node name="grass22" type="Sprite2D" parent="Decoration/Grass" unique_id=882893399]
 material = ExtResource("13")
 position = Vector2(945, 610)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("12")
 
-[node name="flower2" type="Sprite2D" parent="Decoration/Grass"]
+[node name="flower2" type="Sprite2D" parent="Decoration/Grass" unique_id=988226159]
 material = ExtResource("13")
 position = Vector2(889, 609)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("21")
 
-[node name="flower7" type="Sprite2D" parent="Decoration/Grass"]
+[node name="flower7" type="Sprite2D" parent="Decoration/Grass" unique_id=47917385]
 material = ExtResource("13")
 position = Vector2(675, 617)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("21")
 
-[node name="grass43" type="Sprite2D" parent="Decoration/Grass"]
+[node name="grass43" type="Sprite2D" parent="Decoration/Grass" unique_id=69698367]
 material = ExtResource("13")
 position = Vector2(866, 635)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("15")
 
-[node name="grass71" type="Sprite2D" parent="Decoration/Grass"]
+[node name="grass71" type="Sprite2D" parent="Decoration/Grass" unique_id=688663070]
 material = ExtResource("13")
 position = Vector2(687, 632)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("15")
 
-[node name="grass44" type="Sprite2D" parent="Decoration/Grass"]
+[node name="grass44" type="Sprite2D" parent="Decoration/Grass" unique_id=751910477]
 material = ExtResource("13")
 position = Vector2(915, 628)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("15")
 
-[node name="grass45" type="Sprite2D" parent="Decoration/Grass"]
+[node name="grass45" type="Sprite2D" parent="Decoration/Grass" unique_id=1858768048]
 material = ExtResource("13")
 position = Vector2(817, 623)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("12")
 
-[node name="grass46" type="Sprite2D" parent="Decoration/Grass"]
+[node name="grass46" type="Sprite2D" parent="Decoration/Grass" unique_id=439203588]
 material = ExtResource("13")
 position = Vector2(918, 653)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("12")
 
-[node name="grass47" type="Sprite2D" parent="Decoration/Grass"]
+[node name="grass47" type="Sprite2D" parent="Decoration/Grass" unique_id=890909540]
 material = ExtResource("13")
 position = Vector2(832.4, 659.4)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("15")
 
-[node name="grass48" type="Sprite2D" parent="Decoration/Grass"]
+[node name="grass48" type="Sprite2D" parent="Decoration/Grass" unique_id=1930760316]
 material = ExtResource("13")
 position = Vector2(886, 657)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("12")
 
-[node name="grass73" type="Sprite2D" parent="Decoration/Grass"]
+[node name="grass73" type="Sprite2D" parent="Decoration/Grass" unique_id=1351322174]
 material = ExtResource("13")
 position = Vector2(611, 615)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("12")
 
-[node name="grass49" type="Sprite2D" parent="Decoration/Grass"]
+[node name="grass49" type="Sprite2D" parent="Decoration/Grass" unique_id=246461935]
 material = ExtResource("13")
 position = Vector2(1056, 619)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("12")
 
-[node name="grass50" type="Sprite2D" parent="Decoration/Grass"]
+[node name="grass50" type="Sprite2D" parent="Decoration/Grass" unique_id=314330420]
 material = ExtResource("13")
 position = Vector2(988, 610)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("15")
 
-[node name="flower5" type="Sprite2D" parent="Decoration/Grass"]
+[node name="flower5" type="Sprite2D" parent="Decoration/Grass" unique_id=94287792]
 material = ExtResource("13")
 position = Vector2(1012, 637)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("22")
 
-[node name="grass52" type="Sprite2D" parent="Decoration/Grass"]
+[node name="grass52" type="Sprite2D" parent="Decoration/Grass" unique_id=714531541]
 material = ExtResource("13")
 position = Vector2(956, 623)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("12")
 
-[node name="grass53" type="Sprite2D" parent="Decoration/Grass"]
+[node name="grass53" type="Sprite2D" parent="Decoration/Grass" unique_id=725031885]
 material = ExtResource("13")
 position = Vector2(1071, 649)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("12")
 
-[node name="grass54" type="Sprite2D" parent="Decoration/Grass"]
+[node name="grass54" type="Sprite2D" parent="Decoration/Grass" unique_id=996371378]
 material = ExtResource("13")
 position = Vector2(964, 646)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("15")
 
-[node name="grass55" type="Sprite2D" parent="Decoration/Grass"]
+[node name="grass55" type="Sprite2D" parent="Decoration/Grass" unique_id=1603606495]
 material = ExtResource("13")
 position = Vector2(1039, 657)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("12")
 
-[node name="grass23" type="Sprite2D" parent="Decoration/Grass"]
+[node name="grass23" type="Sprite2D" parent="Decoration/Grass" unique_id=292017270]
 material = ExtResource("13")
 position = Vector2(988, 190)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("12")
 
-[node name="grass24" type="Sprite2D" parent="Decoration/Grass"]
+[node name="grass24" type="Sprite2D" parent="Decoration/Grass" unique_id=870945101]
 material = ExtResource("13")
 position = Vector2(955, 193)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("15")
 
-[node name="grass25" type="Sprite2D" parent="Decoration/Grass"]
+[node name="grass25" type="Sprite2D" parent="Decoration/Grass" unique_id=1056424898]
 material = ExtResource("13")
 position = Vector2(979, 214)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("15")
 
-[node name="grass26" type="Sprite2D" parent="Decoration/Grass"]
+[node name="grass26" type="Sprite2D" parent="Decoration/Grass" unique_id=2068602008]
 material = ExtResource("13")
 position = Vector2(915, 208)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("12")
 
-[node name="grass27" type="Sprite2D" parent="Decoration/Grass"]
+[node name="grass27" type="Sprite2D" parent="Decoration/Grass" unique_id=373055111]
 material = ExtResource("13")
 position = Vector2(1019, 202)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("12")
 
-[node name="grass28" type="Sprite2D" parent="Decoration/Grass"]
+[node name="grass28" type="Sprite2D" parent="Decoration/Grass" unique_id=2111633685]
 material = ExtResource("13")
 position = Vector2(939, 229)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("15")
 
-[node name="grass29" type="Sprite2D" parent="Decoration/Grass"]
+[node name="grass29" type="Sprite2D" parent="Decoration/Grass" unique_id=1395205268]
 material = ExtResource("13")
 position = Vector2(1013, 227)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("12")
 
-[node name="grass33" type="Sprite2D" parent="Decoration/Grass"]
+[node name="grass33" type="Sprite2D" parent="Decoration/Grass" unique_id=467789207]
 material = ExtResource("13")
 position = Vector2(661.4, 105.4)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("12")
 
-[node name="grass34" type="Sprite2D" parent="Decoration/Grass"]
+[node name="grass34" type="Sprite2D" parent="Decoration/Grass" unique_id=1072565058]
 material = ExtResource("13")
 position = Vector2(628.4, 108.4)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("15")
 
-[node name="grass35" type="Sprite2D" parent="Decoration/Grass"]
+[node name="grass35" type="Sprite2D" parent="Decoration/Grass" unique_id=1247091916]
 material = ExtResource("13")
 position = Vector2(652.4, 129.4)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("15")
 
-[node name="grass41" type="Sprite2D" parent="Decoration/Grass"]
+[node name="grass41" type="Sprite2D" parent="Decoration/Grass" unique_id=723601862]
 material = ExtResource("13")
 position = Vector2(553, 110)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("15")
 
-[node name="grass61" type="Sprite2D" parent="Decoration/Grass"]
+[node name="grass61" type="Sprite2D" parent="Decoration/Grass" unique_id=1420558679]
 material = ExtResource("13")
 position = Vector2(273, 109)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("15")
 
-[node name="grass74" type="Sprite2D" parent="Decoration/Grass"]
+[node name="grass74" type="Sprite2D" parent="Decoration/Grass" unique_id=42644086]
 material = ExtResource("13")
 position = Vector2(335, 324)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("15")
 
-[node name="grass75" type="Sprite2D" parent="Decoration/Grass"]
+[node name="grass75" type="Sprite2D" parent="Decoration/Grass" unique_id=678888769]
 material = ExtResource("13")
 position = Vector2(351, 280)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("15")
 
-[node name="grass36" type="Sprite2D" parent="Decoration/Grass"]
+[node name="grass36" type="Sprite2D" parent="Decoration/Grass" unique_id=673695718]
 material = ExtResource("13")
 position = Vector2(588.4, 123.4)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("12")
 
-[node name="grass62" type="Sprite2D" parent="Decoration/Grass"]
+[node name="grass62" type="Sprite2D" parent="Decoration/Grass" unique_id=532991657]
 material = ExtResource("13")
 position = Vector2(361, 157)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("12")
 
-[node name="grass59" type="Sprite2D" parent="Decoration/Grass"]
+[node name="grass59" type="Sprite2D" parent="Decoration/Grass" unique_id=454062387]
 material = ExtResource("13")
 position = Vector2(138, 132)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("12")
 
-[node name="grass60" type="Sprite2D" parent="Decoration/Grass"]
+[node name="grass60" type="Sprite2D" parent="Decoration/Grass" unique_id=1658812138]
 material = ExtResource("13")
 position = Vector2(348, 188)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("12")
 
-[node name="grass42" type="Sprite2D" parent="Decoration/Grass"]
+[node name="grass42" type="Sprite2D" parent="Decoration/Grass" unique_id=2071738219]
 material = ExtResource("13")
 position = Vector2(333.8, 537.4)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("15")
 
-[node name="grass51" type="Sprite2D" parent="Decoration/Grass"]
+[node name="grass51" type="Sprite2D" parent="Decoration/Grass" unique_id=1544414172]
 material = ExtResource("13")
 position = Vector2(258.4, 539)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("15")
 
-[node name="grass56" type="Sprite2D" parent="Decoration/Grass"]
+[node name="grass56" type="Sprite2D" parent="Decoration/Grass" unique_id=1934015083]
 material = ExtResource("13")
 position = Vector2(293.8, 552.4)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("12")
 
-[node name="grass37" type="Sprite2D" parent="Decoration/Grass"]
+[node name="grass37" type="Sprite2D" parent="Decoration/Grass" unique_id=915004353]
 material = ExtResource("13")
 position = Vector2(692.4, 117.4)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("12")
 
-[node name="grass40" type="Sprite2D" parent="Decoration/Grass"]
+[node name="grass40" type="Sprite2D" parent="Decoration/Grass" unique_id=409036032]
 material = ExtResource("13")
 position = Vector2(724, 131)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("12")
 
-[node name="grass38" type="Sprite2D" parent="Decoration/Grass"]
+[node name="grass38" type="Sprite2D" parent="Decoration/Grass" unique_id=507916841]
 material = ExtResource("13")
 position = Vector2(612.4, 144.4)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("15")
 
-[node name="grass39" type="Sprite2D" parent="Decoration/Grass"]
+[node name="grass39" type="Sprite2D" parent="Decoration/Grass" unique_id=1899335965]
 material = ExtResource("13")
 position = Vector2(689, 144)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("12")
 
-[node name="grass68" type="Sprite2D" parent="Decoration/Grass"]
+[node name="grass68" type="Sprite2D" parent="Decoration/Grass" unique_id=2118893871]
 material = ExtResource("13")
 position = Vector2(826, 220)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("12")
 
-[node name="grass63" type="Sprite2D" parent="Decoration/Grass"]
+[node name="grass63" type="Sprite2D" parent="Decoration/Grass" unique_id=1492841946]
 material = ExtResource("13")
 position = Vector2(820.4, 302.4)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("15")
 
-[node name="grass64" type="Sprite2D" parent="Decoration/Grass"]
+[node name="grass64" type="Sprite2D" parent="Decoration/Grass" unique_id=1523238901]
 material = ExtResource("13")
 position = Vector2(892, 304)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("12")
 
-[node name="grass65" type="Sprite2D" parent="Decoration/Grass"]
+[node name="grass65" type="Sprite2D" parent="Decoration/Grass" unique_id=284795716]
 material = ExtResource("13")
 position = Vector2(854.4, 315.4)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("12")
 
-[node name="Pebble" type="Node2D" parent="Decoration"]
+[node name="Pebble" type="Node2D" parent="Decoration" unique_id=1969350708]
 
-[node name="pebble1" type="Sprite2D" parent="Decoration/Pebble"]
+[node name="pebble1" type="Sprite2D" parent="Decoration/Pebble" unique_id=1009807469]
 position = Vector2(312, 481)
 texture = ExtResource("17")
 
-[node name="pebble2" type="Sprite2D" parent="Decoration/Pebble"]
+[node name="pebble2" type="Sprite2D" parent="Decoration/Pebble" unique_id=161028160]
 position = Vector2(613.239, 552)
 rotation = 1.96699
 texture = ExtResource("17")
 
-[node name="pebble5" type="Sprite2D" parent="Decoration/Pebble"]
+[node name="pebble5" type="Sprite2D" parent="Decoration/Pebble" unique_id=1751401018]
 position = Vector2(338, 434)
 rotation = 1.96699
 texture = ExtResource("17")
 
-[node name="pebble8" type="Sprite2D" parent="Decoration/Pebble"]
+[node name="pebble8" type="Sprite2D" parent="Decoration/Pebble" unique_id=1473459317]
 position = Vector2(1051, 445)
 rotation = 1.96699
 texture = ExtResource("20")
 
-[node name="pebble16" type="Sprite2D" parent="Decoration/Pebble"]
+[node name="pebble16" type="Sprite2D" parent="Decoration/Pebble" unique_id=1516582511]
 position = Vector2(260, 247)
 rotation = 1.96699
 texture = ExtResource("20")
 
-[node name="pebble12" type="Sprite2D" parent="Decoration/Pebble"]
+[node name="pebble12" type="Sprite2D" parent="Decoration/Pebble" unique_id=1870846639]
 position = Vector2(959, 82)
 rotation = 1.96699
 texture = ExtResource("20")
 
-[node name="pebble11" type="Sprite2D" parent="Decoration/Pebble"]
+[node name="pebble11" type="Sprite2D" parent="Decoration/Pebble" unique_id=544992658]
 position = Vector2(1118, 479)
 rotation = 1.96699
 scale = Vector2(0.630977, 0.630977)
 texture = ExtResource("20")
 
-[node name="pebble14" type="Sprite2D" parent="Decoration/Pebble"]
+[node name="pebble14" type="Sprite2D" parent="Decoration/Pebble" unique_id=1188929424]
 position = Vector2(712, 336)
 rotation = 1.96699
 scale = Vector2(0.630977, 0.630977)
 texture = ExtResource("20")
 
-[node name="pebble15" type="Sprite2D" parent="Decoration/Pebble"]
+[node name="pebble15" type="Sprite2D" parent="Decoration/Pebble" unique_id=4066406]
 position = Vector2(175, 204)
 rotation = 1.96699
 scale = Vector2(0.630977, 0.630977)
 texture = ExtResource("20")
 
-[node name="pebble17" type="Sprite2D" parent="Decoration/Pebble"]
+[node name="pebble17" type="Sprite2D" parent="Decoration/Pebble" unique_id=1272763167]
 position = Vector2(261, 287)
 rotation = 3.90177
 scale = Vector2(0.630977, 0.630977)
 texture = ExtResource("20")
 
-[node name="pebble13" type="Sprite2D" parent="Decoration/Pebble"]
+[node name="pebble13" type="Sprite2D" parent="Decoration/Pebble" unique_id=57943238]
 position = Vector2(955, 112)
 rotation = 1.96699
 scale = Vector2(0.630977, 0.630977)
 texture = ExtResource("20")
 
-[node name="pebble18" type="Sprite2D" parent="Decoration/Pebble"]
+[node name="pebble18" type="Sprite2D" parent="Decoration/Pebble" unique_id=1929211462]
 position = Vector2(753, 95.9999)
 rotation = 2.64724
 scale = Vector2(0.630977, 0.630977)
 texture = ExtResource("20")
 
-[node name="pebble10" type="Sprite2D" parent="Decoration/Pebble"]
+[node name="pebble10" type="Sprite2D" parent="Decoration/Pebble" unique_id=855716434]
 position = Vector2(1144, 529)
 rotation = 3.0703
 texture = ExtResource("20")
 
-[node name="pebble9" type="Sprite2D" parent="Decoration/Pebble"]
+[node name="pebble9" type="Sprite2D" parent="Decoration/Pebble" unique_id=983190984]
 position = Vector2(1159, 415)
 rotation = 1.96699
 texture = ExtResource("20")
 
-[node name="pebble3" type="Sprite2D" parent="Decoration/Pebble"]
+[node name="pebble3" type="Sprite2D" parent="Decoration/Pebble" unique_id=1537345268]
 position = Vector2(869, 405)
 rotation = 1.96699
 texture = ExtResource("17")
 
-[node name="pebble6" type="Sprite2D" parent="Decoration/Pebble"]
+[node name="pebble6" type="Sprite2D" parent="Decoration/Pebble" unique_id=881398371]
 position = Vector2(1088, 169)
 rotation = 1.96699
 texture = ExtResource("17")
 
-[node name="pebble7" type="Sprite2D" parent="Decoration/Pebble"]
+[node name="pebble7" type="Sprite2D" parent="Decoration/Pebble" unique_id=2111684674]
 position = Vector2(775, 186)
 rotation = 3.51922
 texture = ExtResource("17")
 
-[node name="pebble4" type="Sprite2D" parent="Decoration/Pebble"]
+[node name="pebble4" type="Sprite2D" parent="Decoration/Pebble" unique_id=2114146787]
 position = Vector2(596, 520)
 rotation = -0.764454
 texture = ExtResource("17")
 
-[node name="Grid Walkable Floor" type="TileMap" parent="."]
+[node name="Grid Walkable Floor" type="TileMap" parent="." unique_id=99662852]
 z_as_relative = false
 position = Vector2(0, 25)
 tile_set = ExtResource("1")
 format = 2
 
-[node name="Grid" type="TileMap" parent="." node_paths=PackedStringArray("dialogue_ui")]
+[node name="Grid" type="TileMap" parent="." unique_id=1670375850 node_paths=PackedStringArray("dialogue_ui")]
 position = Vector2(0, 25)
 tile_set = ExtResource("2")
 format = 2
@@ -638,1266 +636,1263 @@ layer_0/tile_data = PackedInt32Array(-458764, 3, 0, -458763, 3, 0, -458762, 3, 0
 script = ExtResource("3")
 dialogue_ui = NodePath("../DialogueUI")
 
-[node name="Player" parent="Grid" instance=ExtResource("4")]
+[node name="Player" parent="Grid" unique_id=1516111160 instance=ExtResource("4")]
 z_index = 0
 position = Vector2(224, 288)
 combat_actor = ExtResource("5")
 
-[node name="Opponent" parent="Grid" instance=ExtResource("4")]
+[node name="Opponent" parent="Grid" unique_id=185655678 instance=ExtResource("4")]
 position = Vector2(800, 480)
 script = ExtResource("6")
 combat_actor = ExtResource("7")
 
 [node name="Slime" parent="Grid/Opponent/Pivot" index="0"]
-position = Vector2(0, -4.18243)
-scale = Vector2(0.912595, 1.13111)
-texture = ExtResource("14")
+position = Vector2(0, -3.1531801)
+scale = Vector2(0.9341043, 1.0988436)
+texture = null
 
-[node name="AnimationTree" parent="Grid/Opponent" index="2"]
-parameters/playback = SubResource("AnimationNodeStateMachinePlayback_ksykr")
-
-[node name="DialoguePlayer" parent="Grid/Opponent" instance=ExtResource("8")]
+[node name="DialoguePlayer" parent="Grid/Opponent" unique_id=806693158 instance=ExtResource("8")]
 dialogue_file = "res://dialogue/dialogue_data/npc.json"
 
-[node name="Timer" type="Timer" parent="Grid/Opponent"]
+[node name="Timer" type="Timer" parent="Grid/Opponent" unique_id=279641447]
 one_shot = true
 autostart = true
 
-[node name="Sprite2D" type="Sprite2D" parent="Grid/Opponent"]
+[node name="Sprite2D" type="Sprite2D" parent="Grid/Opponent" unique_id=1563744183]
 visible = false
 texture = ExtResource("14")
 
-[node name="Object" type="Node2D" parent="Grid"]
+[node name="Object" type="Node2D" parent="Grid" unique_id=1787318832]
 position = Vector2(544, 288)
 script = ExtResource("9")
 type = 2
 
-[node name="DialoguePlayer" parent="Grid/Object" instance=ExtResource("8")]
+[node name="DialoguePlayer" parent="Grid/Object" unique_id=2072424676 instance=ExtResource("8")]
 dialogue_file = "res://dialogue/dialogue_data/object.json"
 
-[node name="Decoration upper level" type="Node2D" parent="."]
+[node name="Decoration upper level" type="Node2D" parent="." unique_id=1313066789]
 
-[node name="Grass" type="Node2D" parent="Decoration upper level"]
+[node name="Grass" type="Node2D" parent="Decoration upper level" unique_id=148238324]
 
-[node name="grass1" type="Sprite2D" parent="Decoration upper level/Grass"]
+[node name="grass1" type="Sprite2D" parent="Decoration upper level/Grass" unique_id=1320024826]
 material = ExtResource("13")
 position = Vector2(416, 653)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("18")
 
-[node name="grass9" type="Sprite2D" parent="Decoration upper level/Grass"]
+[node name="grass9" type="Sprite2D" parent="Decoration upper level/Grass" unique_id=314915938]
 material = ExtResource("13")
 position = Vector2(436, 661)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("18")
 
-[node name="grass122" type="Sprite2D" parent="Decoration upper level/Grass"]
+[node name="grass122" type="Sprite2D" parent="Decoration upper level/Grass" unique_id=997833527]
 material = ExtResource("13")
 position = Vector2(460, 620)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("18")
 
-[node name="grass2" type="Sprite2D" parent="Decoration upper level/Grass"]
+[node name="grass2" type="Sprite2D" parent="Decoration upper level/Grass" unique_id=1316069993]
 material = ExtResource("13")
 position = Vector2(336, 652)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("19")
 
-[node name="grass21" type="Sprite2D" parent="Decoration upper level/Grass"]
+[node name="grass21" type="Sprite2D" parent="Decoration upper level/Grass" unique_id=15836142]
 material = ExtResource("13")
 position = Vector2(82, 619)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("19")
 
-[node name="grass19" type="Sprite2D" parent="Decoration upper level/Grass"]
+[node name="grass19" type="Sprite2D" parent="Decoration upper level/Grass" unique_id=1259499609]
 material = ExtResource("13")
 position = Vector2(26, 492)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("19")
 
-[node name="grass27" type="Sprite2D" parent="Decoration upper level/Grass"]
+[node name="grass27" type="Sprite2D" parent="Decoration upper level/Grass" unique_id=594479324]
 material = ExtResource("13")
 position = Vector2(11, 357)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("19")
 
-[node name="grass135" type="Sprite2D" parent="Decoration upper level/Grass"]
+[node name="grass135" type="Sprite2D" parent="Decoration upper level/Grass" unique_id=2020557818]
 material = ExtResource("13")
 position = Vector2(-8, 287)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("19")
 
-[node name="grass136" type="Sprite2D" parent="Decoration upper level/Grass"]
+[node name="grass136" type="Sprite2D" parent="Decoration upper level/Grass" unique_id=519256202]
 material = ExtResource("13")
 position = Vector2(-33, 317)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("19")
 
-[node name="grass28" type="Sprite2D" parent="Decoration upper level/Grass"]
+[node name="grass28" type="Sprite2D" parent="Decoration upper level/Grass" unique_id=252742351]
 material = ExtResource("13")
 position = Vector2(5, 65)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("19")
 
-[node name="grass132" type="Sprite2D" parent="Decoration upper level/Grass"]
+[node name="grass132" type="Sprite2D" parent="Decoration upper level/Grass" unique_id=314786088]
 material = ExtResource("13")
 position = Vector2(-3.8147e-06, 132)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("19")
 
-[node name="grass133" type="Sprite2D" parent="Decoration upper level/Grass"]
+[node name="grass133" type="Sprite2D" parent="Decoration upper level/Grass" unique_id=1343221227]
 material = ExtResource("13")
 position = Vector2(9, 216)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("19")
 
-[node name="grass20" type="Sprite2D" parent="Decoration upper level/Grass"]
+[node name="grass20" type="Sprite2D" parent="Decoration upper level/Grass" unique_id=124975768]
 material = ExtResource("13")
 position = Vector2(-13, 613)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("19")
 
-[node name="grass22" type="Sprite2D" parent="Decoration upper level/Grass"]
+[node name="grass22" type="Sprite2D" parent="Decoration upper level/Grass" unique_id=1889072625]
 material = ExtResource("13")
 position = Vector2(110, 631)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("19")
 
-[node name="grass13" type="Sprite2D" parent="Decoration upper level/Grass"]
+[node name="grass13" type="Sprite2D" parent="Decoration upper level/Grass" unique_id=575772707]
 material = ExtResource("13")
 position = Vector2(1216.4, 261.4)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("18")
 
-[node name="grass14" type="Sprite2D" parent="Decoration upper level/Grass"]
+[node name="grass14" type="Sprite2D" parent="Decoration upper level/Grass" unique_id=2146509340]
 material = ExtResource("13")
 position = Vector2(1236.4, 269.4)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("18")
 
-[node name="grass34" type="Sprite2D" parent="Decoration upper level/Grass"]
+[node name="grass34" type="Sprite2D" parent="Decoration upper level/Grass" unique_id=2049324594]
 material = ExtResource("13")
 position = Vector2(1281, 309)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("18")
 
-[node name="grass17" type="Sprite2D" parent="Decoration upper level/Grass"]
+[node name="grass17" type="Sprite2D" parent="Decoration upper level/Grass" unique_id=953921831]
 material = ExtResource("13")
 position = Vector2(1200.4, 295.4)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("18")
 
-[node name="grass18" type="Sprite2D" parent="Decoration upper level/Grass"]
+[node name="grass18" type="Sprite2D" parent="Decoration upper level/Grass" unique_id=380176910]
 material = ExtResource("13")
 position = Vector2(1184, 322)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("18")
 
-[node name="grass32" type="Sprite2D" parent="Decoration upper level/Grass"]
+[node name="grass32" type="Sprite2D" parent="Decoration upper level/Grass" unique_id=1326726261]
 material = ExtResource("13")
 position = Vector2(1237, 361)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("18")
 
-[node name="grass111" type="Sprite2D" parent="Decoration upper level/Grass"]
+[node name="grass111" type="Sprite2D" parent="Decoration upper level/Grass" unique_id=875772732]
 material = ExtResource("13")
 position = Vector2(1229, 526)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("18")
 
-[node name="grass118" type="Sprite2D" parent="Decoration upper level/Grass"]
+[node name="grass118" type="Sprite2D" parent="Decoration upper level/Grass" unique_id=71873211]
 material = ExtResource("13")
 position = Vector2(1210, 171)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("18")
 
-[node name="grass33" type="Sprite2D" parent="Decoration upper level/Grass"]
+[node name="grass33" type="Sprite2D" parent="Decoration upper level/Grass" unique_id=1181243511]
 material = ExtResource("13")
 position = Vector2(1253, 228)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("18")
 
-[node name="grass15" type="Sprite2D" parent="Decoration upper level/Grass"]
+[node name="grass15" type="Sprite2D" parent="Decoration upper level/Grass" unique_id=1658488194]
 material = ExtResource("13")
 position = Vector2(1136.4, 260.4)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("19")
 
-[node name="grass36" type="Sprite2D" parent="Decoration upper level/Grass"]
+[node name="grass36" type="Sprite2D" parent="Decoration upper level/Grass" unique_id=672829759]
 material = ExtResource("13")
 position = Vector2(1210, 380)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("19")
 
-[node name="grass37" type="Sprite2D" parent="Decoration upper level/Grass"]
+[node name="grass37" type="Sprite2D" parent="Decoration upper level/Grass" unique_id=2086819747]
 material = ExtResource("13")
 position = Vector2(1262, 371)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("19")
 
-[node name="grass38" type="Sprite2D" parent="Decoration upper level/Grass"]
+[node name="grass38" type="Sprite2D" parent="Decoration upper level/Grass" unique_id=538996599]
 material = ExtResource("13")
 position = Vector2(1243, 392)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("19")
 
-[node name="grass112" type="Sprite2D" parent="Decoration upper level/Grass"]
+[node name="grass112" type="Sprite2D" parent="Decoration upper level/Grass" unique_id=561944514]
 material = ExtResource("13")
 position = Vector2(1210, 544)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("19")
 
-[node name="grass117" type="Sprite2D" parent="Decoration upper level/Grass"]
+[node name="grass117" type="Sprite2D" parent="Decoration upper level/Grass" unique_id=112260085]
 material = ExtResource("13")
 position = Vector2(1204, 486)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("19")
 
-[node name="grass39" type="Sprite2D" parent="Decoration upper level/Grass"]
+[node name="grass39" type="Sprite2D" parent="Decoration upper level/Grass" unique_id=1366722384]
 material = ExtResource("13")
 position = Vector2(1156, 337)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("23")
 
-[node name="grass40" type="Sprite2D" parent="Decoration upper level/Grass"]
+[node name="grass40" type="Sprite2D" parent="Decoration upper level/Grass" unique_id=1328803735]
 material = ExtResource("13")
 position = Vector2(1229, 304)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("19")
 
-[node name="grass10" type="Sprite2D" parent="Decoration upper level/Grass"]
+[node name="grass10" type="Sprite2D" parent="Decoration upper level/Grass" unique_id=1447690352]
 material = ExtResource("13")
 position = Vector2(211, 611)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("23")
 
-[node name="grass3" type="Sprite2D" parent="Decoration upper level/Grass"]
+[node name="grass3" type="Sprite2D" parent="Decoration upper level/Grass" unique_id=699604773]
 material = ExtResource("13")
 position = Vector2(138.4, 565.4)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("18")
 
-[node name="grass79" type="Sprite2D" parent="Decoration upper level/Grass"]
+[node name="grass79" type="Sprite2D" parent="Decoration upper level/Grass" unique_id=1041658964]
 material = ExtResource("13")
 position = Vector2(153, 582)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("18")
 
-[node name="grass68" type="Sprite2D" parent="Decoration upper level/Grass"]
+[node name="grass68" type="Sprite2D" parent="Decoration upper level/Grass" unique_id=493817450]
 material = ExtResource("13")
 position = Vector2(38, 505)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("18")
 
-[node name="grass69" type="Sprite2D" parent="Decoration upper level/Grass"]
+[node name="grass69" type="Sprite2D" parent="Decoration upper level/Grass" unique_id=1637883815]
 material = ExtResource("13")
 position = Vector2(-9, 541)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("18")
 
-[node name="grass5" type="Sprite2D" parent="Decoration upper level/Grass"]
+[node name="grass5" type="Sprite2D" parent="Decoration upper level/Grass" unique_id=1362948654]
 material = ExtResource("13")
 position = Vector2(619, 681)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("18")
 
-[node name="grass16" type="Sprite2D" parent="Decoration upper level/Grass"]
+[node name="grass16" type="Sprite2D" parent="Decoration upper level/Grass" unique_id=2026232099]
 material = ExtResource("13")
 position = Vector2(1146, 288)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("18")
 
-[node name="grass29" type="Sprite2D" parent="Decoration upper level/Grass"]
+[node name="grass29" type="Sprite2D" parent="Decoration upper level/Grass" unique_id=694282985]
 material = ExtResource("13")
 position = Vector2(1284.8, 404.4)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("18")
 
-[node name="grass30" type="Sprite2D" parent="Decoration upper level/Grass"]
+[node name="grass30" type="Sprite2D" parent="Decoration upper level/Grass" unique_id=1343476242]
 material = ExtResource("13")
 position = Vector2(1238, 417)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("18")
 
-[node name="grass116" type="Sprite2D" parent="Decoration upper level/Grass"]
+[node name="grass116" type="Sprite2D" parent="Decoration upper level/Grass" unique_id=1031255148]
 material = ExtResource("13")
 position = Vector2(1194, 351)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("18")
 
-[node name="grass110" type="Sprite2D" parent="Decoration upper level/Grass"]
+[node name="grass110" type="Sprite2D" parent="Decoration upper level/Grass" unique_id=120288628]
 material = ExtResource("13")
 position = Vector2(1276, 537)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("18")
 
-[node name="grass31" type="Sprite2D" parent="Decoration upper level/Grass"]
+[node name="grass31" type="Sprite2D" parent="Decoration upper level/Grass" unique_id=780234669]
 material = ExtResource("13")
 position = Vector2(1194.4, 423)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("18")
 
-[node name="grass6" type="Sprite2D" parent="Decoration upper level/Grass"]
+[node name="grass6" type="Sprite2D" parent="Decoration upper level/Grass" unique_id=554687348]
 material = ExtResource("13")
 position = Vector2(106, 7)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("18")
 
-[node name="grass197" type="Sprite2D" parent="Decoration upper level/Grass"]
+[node name="grass197" type="Sprite2D" parent="Decoration upper level/Grass" unique_id=1423076866]
 material = ExtResource("13")
 position = Vector2(226, 13)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("24")
 
-[node name="grass134" type="Sprite2D" parent="Decoration upper level/Grass"]
+[node name="grass134" type="Sprite2D" parent="Decoration upper level/Grass" unique_id=458065796]
 material = ExtResource("13")
 position = Vector2(12, 232)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("18")
 
-[node name="grass137" type="Sprite2D" parent="Decoration upper level/Grass"]
+[node name="grass137" type="Sprite2D" parent="Decoration upper level/Grass" unique_id=843883439]
 material = ExtResource("13")
 position = Vector2(6, 313)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("18")
 
-[node name="grass35" type="Sprite2D" parent="Decoration upper level/Grass"]
+[node name="grass35" type="Sprite2D" parent="Decoration upper level/Grass" unique_id=120010047]
 material = ExtResource("13")
 position = Vector2(1262, 328)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("19")
 
-[node name="grass41" type="Sprite2D" parent="Decoration upper level/Grass"]
+[node name="grass41" type="Sprite2D" parent="Decoration upper level/Grass" unique_id=517818407]
 material = ExtResource("13")
 position = Vector2(1130, -16)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("18")
 
-[node name="grass156" type="Sprite2D" parent="Decoration upper level/Grass"]
+[node name="grass156" type="Sprite2D" parent="Decoration upper level/Grass" unique_id=850104719]
 material = ExtResource("13")
 position = Vector2(1015, -16)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("18")
 
-[node name="grass42" type="Sprite2D" parent="Decoration upper level/Grass"]
+[node name="grass42" type="Sprite2D" parent="Decoration upper level/Grass" unique_id=710430372]
 material = ExtResource("13")
 position = Vector2(1152, -3.8147e-06)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("18")
 
-[node name="grass158" type="Sprite2D" parent="Decoration upper level/Grass"]
+[node name="grass158" type="Sprite2D" parent="Decoration upper level/Grass" unique_id=1090937221]
 material = ExtResource("13")
 position = Vector2(896, 8)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("18")
 
-[node name="grass43" type="Sprite2D" parent="Decoration upper level/Grass"]
+[node name="grass43" type="Sprite2D" parent="Decoration upper level/Grass" unique_id=384096014]
 material = ExtResource("13")
 position = Vector2(1264, 5)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("18")
 
-[node name="grass44" type="Sprite2D" parent="Decoration upper level/Grass"]
+[node name="grass44" type="Sprite2D" parent="Decoration upper level/Grass" unique_id=89291876]
 material = ExtResource("13")
 position = Vector2(1194, -19)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("18")
 
-[node name="grass45" type="Sprite2D" parent="Decoration upper level/Grass"]
+[node name="grass45" type="Sprite2D" parent="Decoration upper level/Grass" unique_id=82377930]
 material = ExtResource("13")
 position = Vector2(1192, -0.599991)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("18")
 
-[node name="grass46" type="Sprite2D" parent="Decoration upper level/Grass"]
+[node name="grass46" type="Sprite2D" parent="Decoration upper level/Grass" unique_id=1339394188]
 material = ExtResource("13")
 position = Vector2(1245, 38.4)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("18")
 
-[node name="grass47" type="Sprite2D" parent="Decoration upper level/Grass"]
+[node name="grass47" type="Sprite2D" parent="Decoration upper level/Grass" unique_id=355957905]
 material = ExtResource("13")
 position = Vector2(1230, 189)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("18")
 
-[node name="grass48" type="Sprite2D" parent="Decoration upper level/Grass"]
+[node name="grass48" type="Sprite2D" parent="Decoration upper level/Grass" unique_id=981170109]
 material = ExtResource("13")
 position = Vector2(1105, -4)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("19")
 
-[node name="grass154" type="Sprite2D" parent="Decoration upper level/Grass"]
+[node name="grass154" type="Sprite2D" parent="Decoration upper level/Grass" unique_id=1091342485]
 material = ExtResource("13")
 position = Vector2(952, -5)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("19")
 
-[node name="grass49" type="Sprite2D" parent="Decoration upper level/Grass"]
+[node name="grass49" type="Sprite2D" parent="Decoration upper level/Grass" unique_id=1582435437]
 material = ExtResource("13")
 position = Vector2(1218, 57.4)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("19")
 
-[node name="grass119" type="Sprite2D" parent="Decoration upper level/Grass"]
+[node name="grass119" type="Sprite2D" parent="Decoration upper level/Grass" unique_id=119162938]
 material = ExtResource("13")
 position = Vector2(1207, 206)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("19")
 
-[node name="grass120" type="Sprite2D" parent="Decoration upper level/Grass"]
+[node name="grass120" type="Sprite2D" parent="Decoration upper level/Grass" unique_id=1032306087]
 material = ExtResource("13")
 position = Vector2(1276, 245)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("19")
 
-[node name="grass50" type="Sprite2D" parent="Decoration upper level/Grass"]
+[node name="grass50" type="Sprite2D" parent="Decoration upper level/Grass" unique_id=1962097159]
 material = ExtResource("13")
 position = Vector2(1270, 48.4)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("19")
 
-[node name="grass51" type="Sprite2D" parent="Decoration upper level/Grass"]
+[node name="grass51" type="Sprite2D" parent="Decoration upper level/Grass" unique_id=756509637]
 material = ExtResource("13")
 position = Vector2(1251, 69.4)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("19")
 
-[node name="grass52" type="Sprite2D" parent="Decoration upper level/Grass"]
+[node name="grass52" type="Sprite2D" parent="Decoration upper level/Grass" unique_id=661854362]
 material = ExtResource("13")
 position = Vector2(1164, 14.4)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("23")
 
-[node name="grass200" type="Sprite2D" parent="Decoration upper level/Grass"]
+[node name="grass200" type="Sprite2D" parent="Decoration upper level/Grass" unique_id=1943382101]
 material = ExtResource("13")
 position = Vector2(596, 16)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("23")
 
-[node name="grass155" type="Sprite2D" parent="Decoration upper level/Grass"]
+[node name="grass155" type="Sprite2D" parent="Decoration upper level/Grass" unique_id=1669674349]
 material = ExtResource("13")
 position = Vector2(979, 5)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("19")
 
-[node name="grass53" type="Sprite2D" parent="Decoration upper level/Grass"]
+[node name="grass53" type="Sprite2D" parent="Decoration upper level/Grass" unique_id=2080823581]
 material = ExtResource("13")
 position = Vector2(1254, 111)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("19")
 
-[node name="grass54" type="Sprite2D" parent="Decoration upper level/Grass"]
+[node name="grass54" type="Sprite2D" parent="Decoration upper level/Grass" unique_id=1926867388]
 material = ExtResource("13")
 position = Vector2(1128, 11)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("18")
 
-[node name="bush3" type="Sprite2D" parent="Decoration upper level/Grass"]
+[node name="bush3" type="Sprite2D" parent="Decoration upper level/Grass" unique_id=584911334]
 material = ExtResource("13")
 position = Vector2(1306, 82.0001)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("25")
 
-[node name="bush4" type="Sprite2D" parent="Decoration upper level/Grass"]
+[node name="bush4" type="Sprite2D" parent="Decoration upper level/Grass" unique_id=619943957]
 material = ExtResource("13")
 position = Vector2(-42.9999, 53)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("25")
 
-[node name="grass157" type="Sprite2D" parent="Decoration upper level/Grass"]
+[node name="grass157" type="Sprite2D" parent="Decoration upper level/Grass" unique_id=1393896688]
 material = ExtResource("13")
 position = Vector2(1020, 13)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("18")
 
-[node name="grass138" type="Sprite2D" parent="Decoration upper level/Grass"]
+[node name="grass138" type="Sprite2D" parent="Decoration upper level/Grass" unique_id=160226487]
 material = ExtResource("13")
 position = Vector2(508.4, -27.6)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("18")
 
-[node name="grass139" type="Sprite2D" parent="Decoration upper level/Grass"]
+[node name="grass139" type="Sprite2D" parent="Decoration upper level/Grass" unique_id=327069633]
 material = ExtResource("13")
 position = Vector2(530.4, -11.6)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("18")
 
-[node name="grass140" type="Sprite2D" parent="Decoration upper level/Grass"]
+[node name="grass140" type="Sprite2D" parent="Decoration upper level/Grass" unique_id=290385452]
 material = ExtResource("13")
 position = Vector2(483.4, -15.6)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("19")
 
-[node name="grass141" type="Sprite2D" parent="Decoration upper level/Grass"]
+[node name="grass141" type="Sprite2D" parent="Decoration upper level/Grass" unique_id=1645499033]
 material = ExtResource("13")
 position = Vector2(542.4, 2.80001)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("19")
 
-[node name="grass142" type="Sprite2D" parent="Decoration upper level/Grass"]
+[node name="grass142" type="Sprite2D" parent="Decoration upper level/Grass" unique_id=2083992039]
 material = ExtResource("13")
 position = Vector2(506.4, -0.599998)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("18")
 
-[node name="grass152" type="Sprite2D" parent="Decoration upper level/Grass"]
+[node name="grass152" type="Sprite2D" parent="Decoration upper level/Grass" unique_id=1656902829]
 material = ExtResource("13")
 position = Vector2(366, -9)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("18")
 
-[node name="grass148" type="Sprite2D" parent="Decoration upper level/Grass"]
+[node name="grass148" type="Sprite2D" parent="Decoration upper level/Grass" unique_id=214864531]
 material = ExtResource("13")
 position = Vector2(656, -7)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("18")
 
-[node name="grass55" type="Sprite2D" parent="Decoration upper level/Grass"]
+[node name="grass55" type="Sprite2D" parent="Decoration upper level/Grass" unique_id=1567645336]
 material = ExtResource("13")
 position = Vector2(1285, 115)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("18")
 
-[node name="grass56" type="Sprite2D" parent="Decoration upper level/Grass"]
+[node name="grass56" type="Sprite2D" parent="Decoration upper level/Grass" unique_id=1000086370]
 material = ExtResource("13")
 position = Vector2(1230, 130)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("18")
 
-[node name="grass57" type="Sprite2D" parent="Decoration upper level/Grass"]
+[node name="grass57" type="Sprite2D" parent="Decoration upper level/Grass" unique_id=1448429119]
 material = ExtResource("13")
 position = Vector2(1202.4, 100.4)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("18")
 
-[node name="grass58" type="Sprite2D" parent="Decoration upper level/Grass"]
+[node name="grass58" type="Sprite2D" parent="Decoration upper level/Grass" unique_id=1733877722]
 material = ExtResource("13")
 position = Vector2(1237, 6)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("19")
 
-[node name="grass7" type="Sprite2D" parent="Decoration upper level/Grass"]
+[node name="grass7" type="Sprite2D" parent="Decoration upper level/Grass" unique_id=860947144]
 material = ExtResource("13")
 position = Vector2(444, 1.90735e-06)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("18")
 
-[node name="grass151" type="Sprite2D" parent="Decoration upper level/Grass"]
+[node name="grass151" type="Sprite2D" parent="Decoration upper level/Grass" unique_id=2018451855]
 material = ExtResource("13")
 position = Vector2(339, 2)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("18")
 
-[node name="grass8" type="Sprite2D" parent="Decoration upper level/Grass"]
+[node name="grass8" type="Sprite2D" parent="Decoration upper level/Grass" unique_id=530246713]
 material = ExtResource("13")
 position = Vector2(466, 3.00006)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("19")
 
-[node name="grass153" type="Sprite2D" parent="Decoration upper level/Grass"]
+[node name="grass153" type="Sprite2D" parent="Decoration upper level/Grass" unique_id=376710636]
 material = ExtResource("13")
 position = Vector2(368, 10)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("19")
 
-[node name="grass198" type="Sprite2D" parent="Decoration upper level/Grass"]
+[node name="grass198" type="Sprite2D" parent="Decoration upper level/Grass" unique_id=1670022167]
 material = ExtResource("13")
 position = Vector2(276.4, 8.4)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("19")
 
-[node name="grass199" type="Sprite2D" parent="Decoration upper level/Grass"]
+[node name="grass199" type="Sprite2D" parent="Decoration upper level/Grass" unique_id=167270622]
 material = ExtResource("13")
 position = Vector2(178.4, 15.3999)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("19")
 
-[node name="bush1" type="Sprite2D" parent="Decoration upper level/Grass"]
+[node name="bush1" type="Sprite2D" parent="Decoration upper level/Grass" unique_id=1843004017]
 material = ExtResource("13")
 position = Vector2(103, 589)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("25")
 
-[node name="bush2" type="Sprite2D" parent="Decoration upper level/Grass"]
+[node name="bush2" type="Sprite2D" parent="Decoration upper level/Grass" unique_id=1736407132]
 material = ExtResource("13")
 position = Vector2(1286, 400)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("25")
 
-[node name="grass143" type="Sprite2D" parent="Decoration upper level/Grass"]
+[node name="grass143" type="Sprite2D" parent="Decoration upper level/Grass" unique_id=1201520717]
 material = ExtResource("13")
 position = Vector2(751.8, -28.6)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("18")
 
-[node name="grass150" type="Sprite2D" parent="Decoration upper level/Grass"]
+[node name="grass150" type="Sprite2D" parent="Decoration upper level/Grass" unique_id=371905123]
 material = ExtResource("13")
 position = Vector2(840, -6)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("18")
 
-[node name="grass144" type="Sprite2D" parent="Decoration upper level/Grass"]
+[node name="grass144" type="Sprite2D" parent="Decoration upper level/Grass" unique_id=1421205897]
 material = ExtResource("13")
 position = Vector2(773.8, -12.6)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("18")
 
-[node name="grass145" type="Sprite2D" parent="Decoration upper level/Grass"]
+[node name="grass145" type="Sprite2D" parent="Decoration upper level/Grass" unique_id=445376001]
 material = ExtResource("13")
 position = Vector2(726.8, -16.6)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("19")
 
-[node name="grass146" type="Sprite2D" parent="Decoration upper level/Grass"]
+[node name="grass146" type="Sprite2D" parent="Decoration upper level/Grass" unique_id=108027555]
 material = ExtResource("13")
 position = Vector2(785.8, 1.80001)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("19")
 
-[node name="grass147" type="Sprite2D" parent="Decoration upper level/Grass"]
+[node name="grass147" type="Sprite2D" parent="Decoration upper level/Grass" unique_id=2089843461]
 material = ExtResource("13")
 position = Vector2(709.4, 2.00006)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("19")
 
-[node name="grass149" type="Sprite2D" parent="Decoration upper level/Grass"]
+[node name="grass149" type="Sprite2D" parent="Decoration upper level/Grass" unique_id=1032806612]
 material = ExtResource("13")
 position = Vector2(748, 11)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("19")
 
-[node name="grass11" type="Sprite2D" parent="Decoration upper level/Grass"]
+[node name="grass11" type="Sprite2D" parent="Decoration upper level/Grass" unique_id=1788188716]
 material = ExtResource("13")
 position = Vector2(33.4, 0.4)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("18")
 
-[node name="grass12" type="Sprite2D" parent="Decoration upper level/Grass"]
+[node name="grass12" type="Sprite2D" parent="Decoration upper level/Grass" unique_id=801551305]
 material = ExtResource("13")
 position = Vector2(55.4, 3.40006)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("19")
 
-[node name="grass23" type="Sprite2D" parent="Decoration upper level/Grass"]
+[node name="grass23" type="Sprite2D" parent="Decoration upper level/Grass" unique_id=1497843503]
 material = ExtResource("13")
 position = Vector2(81, 643)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("18")
 
-[node name="grass24" type="Sprite2D" parent="Decoration upper level/Grass"]
+[node name="grass24" type="Sprite2D" parent="Decoration upper level/Grass" unique_id=1379893678]
 material = ExtResource("13")
 position = Vector2(193, 629)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("18")
 
-[node name="grass80" type="Sprite2D" parent="Decoration upper level/Grass"]
+[node name="grass80" type="Sprite2D" parent="Decoration upper level/Grass" unique_id=454272530]
 material = ExtResource("13")
 position = Vector2(93, 495)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("18")
 
-[node name="grass59" type="Sprite2D" parent="Decoration upper level/Grass"]
+[node name="grass59" type="Sprite2D" parent="Decoration upper level/Grass" unique_id=994968408]
 material = ExtResource("13")
 position = Vector2(392, 679)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("19")
 
-[node name="grass121" type="Sprite2D" parent="Decoration upper level/Grass"]
+[node name="grass121" type="Sprite2D" parent="Decoration upper level/Grass" unique_id=794518888]
 material = ExtResource("13")
 position = Vector2(501, 676)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("19")
 
-[node name="grass60" type="Sprite2D" parent="Decoration upper level/Grass"]
+[node name="grass60" type="Sprite2D" parent="Decoration upper level/Grass" unique_id=689341307]
 material = ExtResource("13")
 position = Vector2(286, 664)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("19")
 
-[node name="grass128" type="Sprite2D" parent="Decoration upper level/Grass"]
+[node name="grass128" type="Sprite2D" parent="Decoration upper level/Grass" unique_id=996362368]
 material = ExtResource("13")
 position = Vector2(341.4, 689.4)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("19")
 
-[node name="grass129" type="Sprite2D" parent="Decoration upper level/Grass"]
+[node name="grass129" type="Sprite2D" parent="Decoration upper level/Grass" unique_id=1319451201]
 material = ExtResource("13")
 position = Vector2(293, 717)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("19")
 
-[node name="grass62" type="Sprite2D" parent="Decoration upper level/Grass"]
+[node name="grass62" type="Sprite2D" parent="Decoration upper level/Grass" unique_id=916001210]
 material = ExtResource("13")
 position = Vector2(250, 629)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("19")
 
-[node name="grass81" type="Sprite2D" parent="Decoration upper level/Grass"]
+[node name="grass81" type="Sprite2D" parent="Decoration upper level/Grass" unique_id=332446323]
 material = ExtResource("13")
 position = Vector2(147, 630)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("19")
 
-[node name="grass65" type="Sprite2D" parent="Decoration upper level/Grass"]
+[node name="grass65" type="Sprite2D" parent="Decoration upper level/Grass" unique_id=1098756131]
 material = ExtResource("13")
 position = Vector2(95, 518)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("19")
 
-[node name="grass66" type="Sprite2D" parent="Decoration upper level/Grass"]
+[node name="grass66" type="Sprite2D" parent="Decoration upper level/Grass" unique_id=1629369445]
 material = ExtResource("13")
 position = Vector2(106, 544)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("24")
 
-[node name="grass78" type="Sprite2D" parent="Decoration upper level/Grass"]
+[node name="grass78" type="Sprite2D" parent="Decoration upper level/Grass" unique_id=312856613]
 material = ExtResource("13")
 position = Vector2(70, 536)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("18")
 
-[node name="grass63" type="Sprite2D" parent="Decoration upper level/Grass"]
+[node name="grass63" type="Sprite2D" parent="Decoration upper level/Grass" unique_id=783085958]
 material = ExtResource("13")
 position = Vector2(153, 669)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("19")
 
-[node name="grass75" type="Sprite2D" parent="Decoration upper level/Grass"]
+[node name="grass75" type="Sprite2D" parent="Decoration upper level/Grass" unique_id=751163275]
 material = ExtResource("13")
 position = Vector2(111, 654)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("19")
 
-[node name="grass76" type="Sprite2D" parent="Decoration upper level/Grass"]
+[node name="grass76" type="Sprite2D" parent="Decoration upper level/Grass" unique_id=2080259338]
 material = ExtResource("13")
 position = Vector2(21, 607)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("24")
 
-[node name="grass77" type="Sprite2D" parent="Decoration upper level/Grass"]
+[node name="grass77" type="Sprite2D" parent="Decoration upper level/Grass" unique_id=1480690953]
 material = ExtResource("13")
 position = Vector2(32, 542)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("19")
 
-[node name="grass61" type="Sprite2D" parent="Decoration upper level/Grass"]
+[node name="grass61" type="Sprite2D" parent="Decoration upper level/Grass" unique_id=1626958922]
 material = ExtResource("13")
 position = Vector2(264.4, 676.4)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("18")
 
-[node name="grass130" type="Sprite2D" parent="Decoration upper level/Grass"]
+[node name="grass130" type="Sprite2D" parent="Decoration upper level/Grass" unique_id=525765413]
 material = ExtResource("13")
 position = Vector2(373, 708)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("18")
 
-[node name="grass131" type="Sprite2D" parent="Decoration upper level/Grass"]
+[node name="grass131" type="Sprite2D" parent="Decoration upper level/Grass" unique_id=328934368]
 material = ExtResource("13")
 position = Vector2(220, 645)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("18")
 
-[node name="grass64" type="Sprite2D" parent="Decoration upper level/Grass"]
+[node name="grass64" type="Sprite2D" parent="Decoration upper level/Grass" unique_id=1507093454]
 material = ExtResource("13")
 position = Vector2(179, 678)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("18")
 
-[node name="grass25" type="Sprite2D" parent="Decoration upper level/Grass"]
+[node name="grass25" type="Sprite2D" parent="Decoration upper level/Grass" unique_id=722109741]
 material = ExtResource("13")
 position = Vector2(149, 500)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("18")
 
-[node name="grass26" type="Sprite2D" parent="Decoration upper level/Grass"]
+[node name="grass26" type="Sprite2D" parent="Decoration upper level/Grass" unique_id=30753498]
 material = ExtResource("13")
 position = Vector2(2.00002, 396)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("18")
 
-[node name="grass4" type="Sprite2D" parent="Decoration upper level/Grass"]
+[node name="grass4" type="Sprite2D" parent="Decoration upper level/Grass" unique_id=1999776087]
 material = ExtResource("13")
 position = Vector2(58.4, 564.4)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("19")
 
-[node name="grass70" type="Sprite2D" parent="Decoration upper level/Grass"]
+[node name="grass70" type="Sprite2D" parent="Decoration upper level/Grass" unique_id=603193810]
 material = ExtResource("13")
 position = Vector2(5, 554)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("19")
 
-[node name="grass71" type="Sprite2D" parent="Decoration upper level/Grass"]
+[node name="grass71" type="Sprite2D" parent="Decoration upper level/Grass" unique_id=1170374671]
 material = ExtResource("13")
 position = Vector2(4, 636)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("19")
 
-[node name="grass72" type="Sprite2D" parent="Decoration upper level/Grass"]
+[node name="grass72" type="Sprite2D" parent="Decoration upper level/Grass" unique_id=1392160379]
 material = ExtResource("13")
 position = Vector2(116, 709)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("19")
 
-[node name="grass73" type="Sprite2D" parent="Decoration upper level/Grass"]
+[node name="grass73" type="Sprite2D" parent="Decoration upper level/Grass" unique_id=2015492045]
 material = ExtResource("13")
 position = Vector2(71, 703)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("19")
 
-[node name="grass74" type="Sprite2D" parent="Decoration upper level/Grass"]
+[node name="grass74" type="Sprite2D" parent="Decoration upper level/Grass" unique_id=1055277472]
 material = ExtResource("13")
 position = Vector2(197, 689)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("19")
 
-[node name="grass82" type="Sprite2D" parent="Decoration upper level/Grass"]
+[node name="grass82" type="Sprite2D" parent="Decoration upper level/Grass" unique_id=411971216]
 material = ExtResource("13")
 position = Vector2(1235.4, 676.4)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("19")
 
-[node name="grass83" type="Sprite2D" parent="Decoration upper level/Grass"]
+[node name="grass83" type="Sprite2D" parent="Decoration upper level/Grass" unique_id=834134973]
 material = ExtResource("13")
 position = Vector2(1140.4, 670.4)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("24")
 
-[node name="grass84" type="Sprite2D" parent="Decoration upper level/Grass"]
+[node name="grass84" type="Sprite2D" parent="Decoration upper level/Grass" unique_id=978246589]
 material = ExtResource("13")
 position = Vector2(1263.4, 688.4)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("19")
 
-[node name="grass85" type="Sprite2D" parent="Decoration upper level/Grass"]
+[node name="grass85" type="Sprite2D" parent="Decoration upper level/Grass" unique_id=711543614]
 material = ExtResource("13")
 position = Vector2(862, 713)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("19")
 
-[node name="grass86" type="Sprite2D" parent="Decoration upper level/Grass"]
+[node name="grass86" type="Sprite2D" parent="Decoration upper level/Grass" unique_id=643671352]
 material = ExtResource("13")
 position = Vector2(1291.8, 622.8)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("18")
 
-[node name="grass87" type="Sprite2D" parent="Decoration upper level/Grass"]
+[node name="grass87" type="Sprite2D" parent="Decoration upper level/Grass" unique_id=724718299]
 material = ExtResource("13")
 position = Vector2(1306.4, 639.4)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("18")
 
-[node name="grass88" type="Sprite2D" parent="Decoration upper level/Grass"]
+[node name="grass88" type="Sprite2D" parent="Decoration upper level/Grass" unique_id=1843204172]
 material = ExtResource("13")
 position = Vector2(1191.4, 562.4)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("18")
 
-[node name="grass89" type="Sprite2D" parent="Decoration upper level/Grass"]
+[node name="grass89" type="Sprite2D" parent="Decoration upper level/Grass" unique_id=314465616]
 material = ExtResource("13")
 position = Vector2(1144.4, 598.4)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("18")
 
-[node name="grass90" type="Sprite2D" parent="Decoration upper level/Grass"]
+[node name="grass90" type="Sprite2D" parent="Decoration upper level/Grass" unique_id=44440141]
 material = ExtResource("13")
 position = Vector2(1201, 700)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("18")
 
-[node name="grass91" type="Sprite2D" parent="Decoration upper level/Grass"]
+[node name="grass91" type="Sprite2D" parent="Decoration upper level/Grass" unique_id=1247722223]
 material = ExtResource("13")
 position = Vector2(680, 714)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("18")
 
-[node name="grass127" type="Sprite2D" parent="Decoration upper level/Grass"]
+[node name="grass127" type="Sprite2D" parent="Decoration upper level/Grass" unique_id=173025275]
 material = ExtResource("13")
 position = Vector2(760, 687)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("18")
 
-[node name="grass196" type="Sprite2D" parent="Decoration upper level/Grass"]
+[node name="grass196" type="Sprite2D" parent="Decoration upper level/Grass" unique_id=1877811215]
 material = ExtResource("13")
 position = Vector2(919, 693)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("24")
 
-[node name="grass92" type="Sprite2D" parent="Decoration upper level/Grass"]
+[node name="grass92" type="Sprite2D" parent="Decoration upper level/Grass" unique_id=933129788]
 material = ExtResource("13")
 position = Vector2(1246.4, 552.4)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("18")
 
-[node name="grass93" type="Sprite2D" parent="Decoration upper level/Grass"]
+[node name="grass93" type="Sprite2D" parent="Decoration upper level/Grass" unique_id=97508922]
 material = ExtResource("13")
 position = Vector2(1303.4, 667.4)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("19")
 
-[node name="grass94" type="Sprite2D" parent="Decoration upper level/Grass"]
+[node name="grass94" type="Sprite2D" parent="Decoration upper level/Grass" unique_id=379919664]
 material = ExtResource("13")
 position = Vector2(1248.4, 575.4)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("19")
 
-[node name="grass95" type="Sprite2D" parent="Decoration upper level/Grass"]
+[node name="grass95" type="Sprite2D" parent="Decoration upper level/Grass" unique_id=671202369]
 material = ExtResource("13")
 position = Vector2(1259.4, 601.4)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("18")
 
-[node name="grass96" type="Sprite2D" parent="Decoration upper level/Grass"]
+[node name="grass96" type="Sprite2D" parent="Decoration upper level/Grass" unique_id=578231764]
 material = ExtResource("13")
 position = Vector2(1223.4, 593.4)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("18")
 
-[node name="grass97" type="Sprite2D" parent="Decoration upper level/Grass"]
+[node name="grass97" type="Sprite2D" parent="Decoration upper level/Grass" unique_id=116365858]
 material = ExtResource("13")
 position = Vector2(637, 695)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("19")
 
-[node name="grass98" type="Sprite2D" parent="Decoration upper level/Grass"]
+[node name="grass98" type="Sprite2D" parent="Decoration upper level/Grass" unique_id=2071089928]
 material = ExtResource("13")
 position = Vector2(1101, 708)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("19")
 
-[node name="grass99" type="Sprite2D" parent="Decoration upper level/Grass"]
+[node name="grass99" type="Sprite2D" parent="Decoration upper level/Grass" unique_id=1040627035]
 material = ExtResource("13")
 position = Vector2(1174.4, 664.4)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("19")
 
-[node name="grass100" type="Sprite2D" parent="Decoration upper level/Grass"]
+[node name="grass100" type="Sprite2D" parent="Decoration upper level/Grass" unique_id=628071852]
 material = ExtResource("13")
 position = Vector2(1185.4, 599.4)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("19")
 
-[node name="grass101" type="Sprite2D" parent="Decoration upper level/Grass"]
+[node name="grass101" type="Sprite2D" parent="Decoration upper level/Grass" unique_id=119888690]
 material = ExtResource("13")
 position = Vector2(567, 689)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("23")
 
-[node name="grass124" type="Sprite2D" parent="Decoration upper level/Grass"]
+[node name="grass124" type="Sprite2D" parent="Decoration upper level/Grass" unique_id=1323625206]
 material = ExtResource("13")
 position = Vector2(457, 692)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("18")
 
-[node name="grass125" type="Sprite2D" parent="Decoration upper level/Grass"]
+[node name="grass125" type="Sprite2D" parent="Decoration upper level/Grass" unique_id=793644516]
 material = ExtResource("13")
 position = Vector2(457, 692)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("18")
 
-[node name="grass102" type="Sprite2D" parent="Decoration upper level/Grass"]
+[node name="grass102" type="Sprite2D" parent="Decoration upper level/Grass" unique_id=1436247569]
 material = ExtResource("13")
 position = Vector2(1302.4, 557.4)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("18")
 
-[node name="grass113" type="Sprite2D" parent="Decoration upper level/Grass"]
+[node name="grass113" type="Sprite2D" parent="Decoration upper level/Grass" unique_id=1088517183]
 material = ExtResource("13")
 position = Vector2(1272, 483)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("18")
 
-[node name="grass114" type="Sprite2D" parent="Decoration upper level/Grass"]
+[node name="grass114" type="Sprite2D" parent="Decoration upper level/Grass" unique_id=1388721241]
 material = ExtResource("13")
 position = Vector2(1287, 445)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("18")
 
-[node name="grass115" type="Sprite2D" parent="Decoration upper level/Grass"]
+[node name="grass115" type="Sprite2D" parent="Decoration upper level/Grass" unique_id=696820262]
 material = ExtResource("13")
 position = Vector2(1228, 457)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("18")
 
-[node name="grass103" type="Sprite2D" parent="Decoration upper level/Grass"]
+[node name="grass103" type="Sprite2D" parent="Decoration upper level/Grass" unique_id=1468757134]
 material = ExtResource("13")
 position = Vector2(1211.8, 621.8)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("19")
 
-[node name="grass104" type="Sprite2D" parent="Decoration upper level/Grass"]
+[node name="grass104" type="Sprite2D" parent="Decoration upper level/Grass" unique_id=1933095589]
 material = ExtResource("13")
 position = Vector2(1158.4, 611.4)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("19")
 
-[node name="grass159" type="Sprite2D" parent="Decoration upper level/Grass"]
+[node name="grass159" type="Sprite2D" parent="Decoration upper level/Grass" unique_id=1502757206]
 material = ExtResource("13")
 position = Vector2(504, 170)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("19")
 
-[node name="grass194" type="Sprite2D" parent="Decoration upper level/Grass"]
+[node name="grass194" type="Sprite2D" parent="Decoration upper level/Grass" unique_id=139142474]
 material = ExtResource("13")
 position = Vector2(607, 175)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("19")
 
-[node name="grass160" type="Sprite2D" parent="Decoration upper level/Grass"]
+[node name="grass160" type="Sprite2D" parent="Decoration upper level/Grass" unique_id=652445855]
 material = ExtResource("13")
 position = Vector2(453, 172)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("24")
 
-[node name="grass161" type="Sprite2D" parent="Decoration upper level/Grass"]
+[node name="grass161" type="Sprite2D" parent="Decoration upper level/Grass" unique_id=158867432]
 material = ExtResource("13")
 position = Vector2(434, 199)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("18")
 
-[node name="grass162" type="Sprite2D" parent="Decoration upper level/Grass"]
+[node name="grass162" type="Sprite2D" parent="Decoration upper level/Grass" unique_id=241963264]
 material = ExtResource("13")
 position = Vector2(546, 172)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("18")
 
-[node name="grass192" type="Sprite2D" parent="Decoration upper level/Grass"]
+[node name="grass192" type="Sprite2D" parent="Decoration upper level/Grass" unique_id=2102302120]
 material = ExtResource("13")
 position = Vector2(659, 175)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("18")
 
-[node name="grass163" type="Sprite2D" parent="Decoration upper level/Grass"]
+[node name="grass163" type="Sprite2D" parent="Decoration upper level/Grass" unique_id=1007016847]
 material = ExtResource("13")
 position = Vector2(544, 194)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("18")
 
-[node name="grass193" type="Sprite2D" parent="Decoration upper level/Grass"]
+[node name="grass193" type="Sprite2D" parent="Decoration upper level/Grass" unique_id=760877683]
 material = ExtResource("13")
 position = Vector2(640, 195)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("18")
 
-[node name="grass164" type="Sprite2D" parent="Decoration upper level/Grass"]
+[node name="grass164" type="Sprite2D" parent="Decoration upper level/Grass" unique_id=45457631]
 material = ExtResource("13")
 position = Vector2(515, 205)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("18")
 
-[node name="grass165" type="Sprite2D" parent="Decoration upper level/Grass"]
+[node name="grass165" type="Sprite2D" parent="Decoration upper level/Grass" unique_id=708481013]
 material = ExtResource("13")
 position = Vector2(462, 199)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("19")
 
-[node name="grass166" type="Sprite2D" parent="Decoration upper level/Grass"]
+[node name="grass166" type="Sprite2D" parent="Decoration upper level/Grass" unique_id=207797000]
 material = ExtResource("13")
 position = Vector2(578, 207)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("23")
 
-[node name="grass195" type="Sprite2D" parent="Decoration upper level/Grass"]
+[node name="grass195" type="Sprite2D" parent="Decoration upper level/Grass" unique_id=1246647883]
 material = ExtResource("13")
 position = Vector2(651, 208)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("19")
 
-[node name="grass167" type="Sprite2D" parent="Decoration upper level/Grass"]
+[node name="grass167" type="Sprite2D" parent="Decoration upper level/Grass" unique_id=1799342032]
 material = ExtResource("13")
 position = Vector2(466, 217)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("19")
 
-[node name="grass168" type="Sprite2D" parent="Decoration upper level/Grass"]
+[node name="grass168" type="Sprite2D" parent="Decoration upper level/Grass" unique_id=1633641020]
 material = ExtResource("13")
 position = Vector2(436, 235)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("18")
 
-[node name="grass169" type="Sprite2D" parent="Decoration upper level/Grass"]
+[node name="grass169" type="Sprite2D" parent="Decoration upper level/Grass" unique_id=939762500]
 material = ExtResource("13")
 position = Vector2(457, 253)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("19")
 
-[node name="grass170" type="Sprite2D" parent="Decoration upper level/Grass"]
+[node name="grass170" type="Sprite2D" parent="Decoration upper level/Grass" unique_id=853370739]
 material = ExtResource("13")
 position = Vector2(465.4, 283.4)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("18")
 
-[node name="grass171" type="Sprite2D" parent="Decoration upper level/Grass"]
+[node name="grass171" type="Sprite2D" parent="Decoration upper level/Grass" unique_id=1113935788]
 material = ExtResource("13")
 position = Vector2(470, 298)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("19")
 
-[node name="grass172" type="Sprite2D" parent="Decoration upper level/Grass"]
+[node name="grass172" type="Sprite2D" parent="Decoration upper level/Grass" unique_id=426956432]
 material = ExtResource("13")
 position = Vector2(429, 291)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("18")
 
-[node name="grass173" type="Sprite2D" parent="Decoration upper level/Grass"]
+[node name="grass173" type="Sprite2D" parent="Decoration upper level/Grass" unique_id=2113608918]
 material = ExtResource("13")
 position = Vector2(444.4, 310.4)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("19")
 
-[node name="grass174" type="Sprite2D" parent="Decoration upper level/Grass"]
+[node name="grass174" type="Sprite2D" parent="Decoration upper level/Grass" unique_id=1148222899]
 material = ExtResource("13")
 position = Vector2(457.4, 323.4)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("24")
 
-[node name="grass175" type="Sprite2D" parent="Decoration upper level/Grass"]
+[node name="grass175" type="Sprite2D" parent="Decoration upper level/Grass" unique_id=1005816906]
 material = ExtResource("13")
 position = Vector2(471.4, 336.4)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("19")
 
-[node name="grass176" type="Sprite2D" parent="Decoration upper level/Grass"]
+[node name="grass176" type="Sprite2D" parent="Decoration upper level/Grass" unique_id=151881487]
 material = ExtResource("13")
 position = Vector2(434, 341)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("18")
 
-[node name="grass177" type="Sprite2D" parent="Decoration upper level/Grass"]
+[node name="grass177" type="Sprite2D" parent="Decoration upper level/Grass" unique_id=1786231201]
 material = ExtResource("13")
 position = Vector2(443.4, 361.4)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("19")
 
-[node name="grass178" type="Sprite2D" parent="Decoration upper level/Grass"]
+[node name="grass178" type="Sprite2D" parent="Decoration upper level/Grass" unique_id=535643982]
 material = ExtResource("13")
 position = Vector2(471.4, 365.4)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("18")
 
-[node name="grass179" type="Sprite2D" parent="Decoration upper level/Grass"]
+[node name="grass179" type="Sprite2D" parent="Decoration upper level/Grass" unique_id=565770390]
 material = ExtResource("13")
 position = Vector2(485.4, 378.4)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("19")
 
-[node name="grass180" type="Sprite2D" parent="Decoration upper level/Grass"]
+[node name="grass180" type="Sprite2D" parent="Decoration upper level/Grass" unique_id=1277049036]
 material = ExtResource("13")
 position = Vector2(440, 389)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("23")
 
-[node name="grass181" type="Sprite2D" parent="Decoration upper level/Grass"]
+[node name="grass181" type="Sprite2D" parent="Decoration upper level/Grass" unique_id=1835197959]
 material = ExtResource("13")
 position = Vector2(491, 396)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("19")
 
-[node name="grass182" type="Sprite2D" parent="Decoration upper level/Grass"]
+[node name="grass182" type="Sprite2D" parent="Decoration upper level/Grass" unique_id=1447851390]
 material = ExtResource("13")
 position = Vector2(530, 355)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("18")
 
-[node name="grass183" type="Sprite2D" parent="Decoration upper level/Grass"]
+[node name="grass183" type="Sprite2D" parent="Decoration upper level/Grass" unique_id=2109288474]
 material = ExtResource("13")
 position = Vector2(526, 384)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("19")
 
-[node name="grass184" type="Sprite2D" parent="Decoration upper level/Grass"]
+[node name="grass184" type="Sprite2D" parent="Decoration upper level/Grass" unique_id=2057331830]
 material = ExtResource("13")
 position = Vector2(578.4, 373.4)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("18")
 
-[node name="grass185" type="Sprite2D" parent="Decoration upper level/Grass"]
+[node name="grass185" type="Sprite2D" parent="Decoration upper level/Grass" unique_id=908485383]
 material = ExtResource("13")
 position = Vector2(592.4, 386.4)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("24")
 
-[node name="grass186" type="Sprite2D" parent="Decoration upper level/Grass"]
+[node name="grass186" type="Sprite2D" parent="Decoration upper level/Grass" unique_id=735402005]
 material = ExtResource("13")
 position = Vector2(550, 393)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("18")
 
-[node name="grass187" type="Sprite2D" parent="Decoration upper level/Grass"]
+[node name="grass187" type="Sprite2D" parent="Decoration upper level/Grass" unique_id=275559513]
 material = ExtResource("13")
 position = Vector2(564, 398)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("19")
 
-[node name="grass188" type="Sprite2D" parent="Decoration upper level/Grass"]
+[node name="grass188" type="Sprite2D" parent="Decoration upper level/Grass" unique_id=1193288404]
 material = ExtResource("13")
 position = Vector2(628.4, 373.4)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("18")
 
-[node name="grass189" type="Sprite2D" parent="Decoration upper level/Grass"]
+[node name="grass189" type="Sprite2D" parent="Decoration upper level/Grass" unique_id=1129334125]
 material = ExtResource("13")
 position = Vector2(642.4, 386.4)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("19")
 
-[node name="grass190" type="Sprite2D" parent="Decoration upper level/Grass"]
+[node name="grass190" type="Sprite2D" parent="Decoration upper level/Grass" unique_id=1576519109]
 material = ExtResource("13")
 position = Vector2(616, 395)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("18")
 
-[node name="grass191" type="Sprite2D" parent="Decoration upper level/Grass"]
+[node name="grass191" type="Sprite2D" parent="Decoration upper level/Grass" unique_id=137079287]
 material = ExtResource("13")
 position = Vector2(649, 400)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("19")
 
-[node name="grass105" type="Sprite2D" parent="Decoration upper level/Grass"]
+[node name="grass105" type="Sprite2D" parent="Decoration upper level/Grass" unique_id=755141577]
 material = ExtResource("13")
 position = Vector2(1159.4, 685.4)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("19")
 
-[node name="grass106" type="Sprite2D" parent="Decoration upper level/Grass"]
+[node name="grass106" type="Sprite2D" parent="Decoration upper level/Grass" unique_id=2089819432]
 material = ExtResource("13")
 position = Vector2(992, 701)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("19")
 
-[node name="grass107" type="Sprite2D" parent="Decoration upper level/Grass"]
+[node name="grass107" type="Sprite2D" parent="Decoration upper level/Grass" unique_id=456567738]
 material = ExtResource("13")
 position = Vector2(1070, 708)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("19")
 
-[node name="grass108" type="Sprite2D" parent="Decoration upper level/Grass"]
+[node name="grass108" type="Sprite2D" parent="Decoration upper level/Grass" unique_id=1688228246]
 material = ExtResource("13")
 position = Vector2(1237, 707)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("19")
 
-[node name="grass109" type="Sprite2D" parent="Decoration upper level/Grass"]
+[node name="grass109" type="Sprite2D" parent="Decoration upper level/Grass" unique_id=885866259]
 material = ExtResource("13")
 position = Vector2(1246.4, 628.4)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("19")
 
-[node name="grass123" type="Sprite2D" parent="Decoration upper level/Grass"]
+[node name="grass123" type="Sprite2D" parent="Decoration upper level/Grass" unique_id=1250635721]
 material = ExtResource("13")
 position = Vector2(428, 713)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("19")
 
-[node name="grass126" type="Sprite2D" parent="Decoration upper level/Grass"]
+[node name="grass126" type="Sprite2D" parent="Decoration upper level/Grass" unique_id=1631886596]
 material = ExtResource("13")
 position = Vector2(537, 710)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("19")
 
-[node name="DialogueUI" parent="." instance=ExtResource("10")]
+[node name="DialogueUI" parent="." unique_id=1014274283 instance=ExtResource("10")]
 visible = false
 
 [editable path="Grid/Opponent"]
