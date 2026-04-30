@@ -235,8 +235,8 @@ libraries/ = SubResource("AnimationLibrary_yxglf")
 [node name="Pivot" type="Marker2D" parent="." unique_id=1188488896]
 
 [node name="Slime" type="Sprite2D" parent="Pivot" unique_id=943897375]
-position = Vector2(0, -2.0679674)
-scale = Vector2(0.9620305, 1.0650135)
+position = Vector2(0, -3.0832617)
+scale = Vector2(0.9355655, 1.0966518)
 centered = false
 offset = Vector2(-32, -32)
 
@@ -251,3 +251,5 @@ offset = Vector2(-32, -32)
 [node name="AnimationTree" type="AnimationTree" parent="." unique_id=671337030]
 tree_root = SubResource("5")
 anim_player = NodePath("../AnimationPlayer")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1528386829]
