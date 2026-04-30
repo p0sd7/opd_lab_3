@@ -1,6 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://8ylj6j3vmxoy"]
+[gd_scene format=3 uid="uid://8ylj6j3vmxoy"]
 
-[ext_resource type="Script" path="res://game.gd" id="1"]
+[ext_resource type="Script" uid="uid://cbg3mai4mac71" path="res://game.gd" id="1"]
 [ext_resource type="PackedScene" uid="uid://b4aouv6fsdecc" path="res://combat/combat.tscn" id="2"]
 [ext_resource type="PackedScene" uid="uid://ckgv4m67a5kfj" path="res://grid_movement/exploration.tscn" id="3"]
 
@@ -21,22 +21,20 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_53g8u"]
 _data = {
-"fade": SubResource("1")
+&"fade": SubResource("1")
 }
 
-[node name="Game" type="Node" node_paths=PackedStringArray("combat_screen", "exploration_screen")]
+[node name="Game" type="Node" unique_id=741675363 node_paths=PackedStringArray("combat_screen", "exploration_screen")]
 script = ExtResource("1")
 combat_screen = NodePath("Combat")
 exploration_screen = NodePath("Exploration")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_53g8u")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1717253755]
+libraries/ = SubResource("AnimationLibrary_53g8u")
 
-[node name="Transition" type="CanvasLayer" parent="."]
+[node name="Transition" type="CanvasLayer" parent="." unique_id=1017399062]
 
-[node name="ColorRect" type="ColorRect" parent="Transition"]
+[node name="ColorRect" type="ColorRect" parent="Transition" unique_id=1037431055]
 visible = false
 anchors_preset = 15
 anchor_right = 1.0
@@ -44,10 +42,11 @@ anchor_bottom = 1.0
 mouse_filter = 1
 color = Color(0.0703125, 0.0703125, 0.0703125, 0)
 
-[node name="Combat" parent="." instance=ExtResource("2")]
+[node name="Combat" parent="." unique_id=916750082 instance=ExtResource("2")]
 visible = false
 
-[node name="Exploration" parent="." instance=ExtResource("3")]
+[node name="Exploration" parent="." unique_id=202115052 instance=ExtResource("3")]
+scale = Vector2(0.46058118, 0.57457024)
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Camera2D" type="Camera2D" parent="." unique_id=249745821]
 offset = Vector2(640, 360)
