@@ -13,18 +13,6 @@ jobs:
     steps:
       - name: Checkout source code
         uses: actions/checkout@v3
-
-      - name: Debug directory structure
-        run: |
-          echo "Current directory:"
-          pwd
-          echo "Contents of root:"
-          ls -la
-          echo "Contents of project directory:"
-          ls -la role-playing-game-\(rpg\)-demo/
-          echo "Contents of export_presets.cfg:"
-          head -n 10 role-playing-game-\(rpg\)-demo/export_presets.cfg
-
       - name: Godot Export
         id: export
         uses: firebelley/godot-export@v7.0.0
